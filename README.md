@@ -64,13 +64,12 @@ This is a course project called **MarcDonalds** — a fully functional online fa
    ```bash
    git clone https://github.com/your-username/MarcDonalds.git
    cd MarcDonalds
-````
 
 2. **Run SQL Server via Docker**
    Make sure Docker is installed, then run:
 
    ```bash
-   "docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=StrongPassw0rd!" -p 1433:1433 --name sql-marc -d mcr.microsoft.com/mssql/server"
+   docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=StrongPassw0rd!" -p 1433:1433 --name sql-marc -d mcr.microsoft.com/mssql/server
    ```
 
 3. **Configure the connection string**
