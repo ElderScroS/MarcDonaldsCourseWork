@@ -74,9 +74,14 @@ This is a course project called **MarcDonalds** — a fully functional online fa
 
 3. **Configure the connection string**
    In `appsettings.Development.json`, use the following connection string:
+4. **Create and apply database migrations**
 
    ```json
    "DefaultConnection": "Server=localhost,1433;Database=MarkRestaurant;User Id=sa;Password=StrongPassw0rd!;TrustServerCertificate=True;"
+   ```
+
+   ```bash
+   dotnet ef migrations add "InitialCreate"
    ```
 
 4. **Apply database migrations**
