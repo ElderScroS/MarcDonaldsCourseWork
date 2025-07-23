@@ -1,8 +1,3 @@
-Here is the updated README with your connection string included, translated into English:
-
----
-
-````markdown
 # 🍔 MarcDonalds — Online Fast Food Ordering System
 
 This is a course project called **MarcDonalds** — a fully functional online fast food ordering system built with **ASP.NET Core MVC** using the **Code First** approach and **SQL Server** running in **Docker**.
