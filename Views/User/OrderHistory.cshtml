@@ -1,0 +1,150 @@
+@using MarkRestaurant.Data.Repositories
+@model User
+@inject IOrderRepository orderRepository
+
+@{
+    ViewData["Title"] = "Order History";
+    List<Order>? completedOrders = orderRepository.GetCompletedOrdersByUserIdAsync(Model.Id).Result;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/css/user/user-history.css" rel="stylesheet" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="sub_page">
+    <div class="hero_area">
+        <partial name="~/Views/Shared/Navbars/_Navbar.cshtml" />
+    </div>
+
+    <section class="food_section layout_padding fade-in">
+        <div class="custom-container">
+            @if (completedOrders == null || !completedOrders.Any())
+            {
+                <p class="custom-empty-message">
+                    @Localizer["You haven’t completed any orders yet. Let's complete someone!"]
+                </p>
+            }
+            else
+            {
+               @foreach (var order in completedOrders!)
+                {
+                    <div class="order-card" onclick="showOrderDetails('@order.OrderNumber')">
+                        <div class="order-header">
+                            <div>
+                                <h4 class="order-id">@order.OrderNumber</h4>
+                                <p class="order-date">@order.CreatedAt.ToString("dd MMM yyyy HH:mm")</p>
+                            </div>
+                            <div class="order-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-modal" id="modal-@order.OrderNumber">
+                        <div class="order-modal-content">
+                            <span class="close-button" onclick="closeModal('@order.OrderNumber')">&times;</span>
+
+                            <!-- Заголовок с номером заказа и временем -->
+                            <div class="modal-header">
+                                <h3>@order.OrderNumber</h3>
+                                <div class="modal-subinfo">Created: @order.CreatedAt.ToString("dd MMM yyyy HH:mm")</div>
+                                <div class="modal-subinfo">Delivered: @order.DelieveredAt.ToString("dd MMM yyyy HH:mm")</div>
+                            </div>
+
+                            <!-- Адрес и LeaveAtDoor -->
+                            <div class="modal-address">
+                                <p><strong>Delivery Address:</strong> @order.SendToAddress?.Street @order.SendToAddress?.HouseNumber</p>
+                                <p><strong>Leave At Door:</strong> @(order.LeaveAtDoor ? "Yes" : "No")</p>
+                            </div>
+
+                            <!-- Чаевые -->
+                            <div class="modal-fees">
+                                <p><strong>Tips (@order.TipsPercentage.ToString("F0")%):</strong> @order.TipsAmount.ToString("F2") AZN</p>
+                                <p><strong>Packaging fee:</strong> 0,50 AZN</p>
+                                <p><strong>Service fee:</strong> 0,80 AZN</p>
+                            </div>
+
+                            <!-- Список товаров -->
+                            <ul class="modal-items">
+                                @foreach (var item in order.Items)
+                                {
+                                    <li>
+                                        <span class="item-name">@item.Product!.Title</span>
+                                        <span class="item-qty">@item.Product.Price.ToString("F2") AZN × @item.Quantity</span>
+                                    </li>
+                                }
+                            </ul>
+
+                            <!-- Сумма всего заказа -->
+                            <div class="modal-total">Total: @order.Amount.ToString("F2") AZN</div>
+
+                            <!-- Payment и Delivery Cost -->
+                            <div class="modal-footer-info">
+                                <p><strong>Payment:</strong> @order.PaymentMethod</p>
+                                <p><strong>Delivery Cost:</strong> @order.DeliveryCost.ToString("F2") AZN</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </section>
+    
+<script>
+   function showOrderDetails(orderNumber) {
+    const $modal = $("#modal-" + CSS.escape(orderNumber));
+    if ($modal.length) {
+        // Показываем модалку
+        $modal.fadeIn(200);
+        $("body").addClass("no-scroll");
+
+        // Получаем текущий скролл страницы по Y
+        const scrollTop = $(window).scrollTop();
+        const windowHeight = $(window).height();
+
+        // Высота самой модалки контента
+        const $content = $modal.find('.order-modal-content');
+        const modalHeight = $content.outerHeight();
+
+        // Считаем верхнюю позицию, чтобы центрировать по вертикали с учётом скролла
+        const topPosition = scrollTop + (windowHeight / 2) - (modalHeight / 2);
+
+        // Устанавливаем computed top
+        $content.css('top', Math.max(topPosition, scrollTop + 20)); // минимум 20px от верха
+
+        // Для абсолютного позиционирования внутри модалки:
+        // добавляем position: absolute и left: 50%, transform для центрирования по горизонтали
+        $content.css({
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+        });
+    }
+}
+
+
+    function closeModal(orderNumber) {
+        const $modal = $("#modal-" + CSS.escape(orderNumber));
+        if ($modal.length) {
+            $modal.fadeOut(200);
+            $("body").removeClass("no-scroll");
+        }
+    }
+
+    $(document).ready(function () {
+        $(".order-modal").on("click", function (e) {
+            if ($(e.target).is(".order-modal")) {
+                $(this).fadeOut(200);
+                $("body").removeClass("no-scroll");
+            }
+        });
+    });
+</script>
+
+
+    <partial name="~/Views/Shared/Sections/_Footer.cshtml" />
+</body>
+</html>

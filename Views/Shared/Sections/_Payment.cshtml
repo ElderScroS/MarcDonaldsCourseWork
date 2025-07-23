@@ -1,0 +1,191 @@
+@using MarkRestaurant.Models
+@using MarkRestaurant.Data.Repositories
+@inject ICardRepository cardRepository
+
+<link href="~/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/payment/general.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/payment/payment-selection.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/payment/add-card.css" rel="stylesheet" asp-append-version="true"/>
+
+@{
+    string? currentPage = ViewData["Title"] as string;
+
+    List<Card> cards = await cardRepository.GetCardsByUserAsync(User);  
+}
+
+<span id="currentPage" style="display: none;">@currentPage</span>
+
+<div class="modal-overlay-payment">
+    <div class="modal-content-payment">
+        <div class="modal-header-payment">
+            <button class="back-btn-payment" onclick="showPaymentList()" style="display: none;"><i class="fa-solid fa-arrow-left"></i></button>
+            <h5 class="modal-title-dynamic-payment"></h5>
+            <button class="close-btn-payment" onclick="closeModal()">✕</button>
+        </div>
+
+        <div class="modal-container-relative-payment">
+            <div id="payment-selection" class="modal-view-payment active">
+                <h3 class="modal-title-payment">Payment Method</h3>
+                
+                <h4 class="credit-title">@Localizer["Credit and debit cards"]</h4>
+                @if (!cards.Any())
+                {
+                    <div class="add-card-button">
+                        <i class="fa-solid fa-plus add-card-icon"></i> <span>Add card</span>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-list-container">
+                        @foreach (var card in cards)
+                        {
+                            <div class="card-item">
+                                <div class="img-name">
+                                    @if (card.IsVisa) {
+                                        <img class="visa-img" src="/images/other/visa.jpg">
+                                    }
+                                    else {
+                                        <img class="master-img" src="/images/other/mastercard.jpg">
+                                    }
+
+                                    @{ 
+                                        var cardNumber = card?.CardNumber ?? "";
+                                        var first6 = cardNumber.Length >= 6 ? cardNumber[..6] : "";
+                                        var last4 = cardNumber.Length >= 4 ? cardNumber[^4..] : ""; 
+                                    }
+
+                                    <div class="name-number">
+                                        @if (string.IsNullOrEmpty(card!.CardName)) {
+                                            <p class="card-name">Card</p>
+
+                                            <p class="card-number">@first6******@last4</p>
+                                        }
+                                        else {
+                                            <p class="card-name">@card.CardName</p>
+
+                                            <p class="card-number">@first6******@last4</p>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="payment-btns">
+                                    <button class="select-btn-card @(card.IsSelected == true ? "cardSelected" : "")" data-card-id="@card.Id" data-card-number="@card.CardNumber" data-card-name="@card.CardName">
+                                        Select
+                                    </button>
+
+                                    <button class="delete-btn-card" data-card-id=@card.Id>Delete</button>
+                                </div>
+                            </div>
+                            <hr class="card-hr"/>
+                        }
+                        <div class="add-card-button">
+                                <i class="fa-solid fa-plus add-card-icon"></i> <span>Add card</span>
+                        </div>
+                    </div>
+                }
+
+                <h4 class="other-title">@Localizer["Other payment method"]</h4>
+
+                <div class="payment">
+                    <div class="div-apple">
+                        <img class="img-apple" src="~/images/other/applepay.png">
+                    </div>
+
+                    <p class="payment-title">Apple Pay</p>
+
+                    <button class="select-payment-btn @(Model.PaymentMethod == PaymentMethod.ApplePay ? "disabled" : "")" data-payment="Apple">Select</button>
+                </div>
+                <div class="hr-div">
+                    <hr class="payment-hr"/>
+                </div>
+                <div class="payment">
+                    <img class="img-google" src="~/images/other/googlepay.png">
+
+                    <p class="payment-title">Google Pay</p>
+
+                    <button class="select-payment-btn @(Model.PaymentMethod == PaymentMethod.GooglePay ? "disabled" : "")" data-payment="Google">Select</button>
+                </div>
+                <div class="hr-div">
+                    <hr class="payment-hr"/>
+                </div>
+                <div class="payment">
+                    <div class="cash-div">
+                        <img class="cash-img" src="~/images/other/money.png">
+                    </div>
+
+                    <p class="payment-title">Cash</p>
+
+                    <button class="select-payment-btn @(Model.PaymentMethod == PaymentMethod.Cash ? "disabled" : "")" data-payment="Cash">Select</button>
+                </div>
+                <div class="hr-div">
+                    <hr class="payment-hr"/>
+                </div>
+            </div>
+    
+            <div id="add-card" class="modal-view-payment">
+                <h3 class="modal-title-card">Add Card</h3>
+
+                <div class="card-form">
+                    <div class="card-front">
+                        <div class="card-type">
+                            <span class="card-type-text">CREDIT / DEBIT</span>
+                            <img id="card-brand-icon" src="/images/other/placeholder.png" alt="Card brand" class="card-icon-img" />
+                        </div>
+
+                        <div class="card-field">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" class="card-number" maxlength="19" />
+                        </div>
+
+                        <div class="card-row">
+                            <div class="card-expiry">
+                                <label for="expiry">Expiration Date</label>
+                                <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" />
+                            </div>
+                            <div class="card-cvc">
+                                <label for="cvc">CVC</label>
+                                <input type="text" id="cvc" placeholder="CVC" maxlength="3" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="card-info">
+                        You can use a debit or credit card for orders on MarcDondalds. Funds will only be charged after the order is delivered.
+                    </p>
+
+                    <div class="card-group">
+                        <input type="text" id="card-name-input" class="card-name" placeholder=" "/>
+                        <label for="card-name">Card name (optional)</label>
+                    </div>
+
+                    <div class="card-options">
+                        <div class="toggle-default">
+                            <span class="default">Use as default</span>
+                        </div>
+                        <label class="switch-default">
+                            <input type="checkbox">
+                            <span class="slider-default"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-div">
+                    <button id="add-card-btn" class="add-card-btn" disabled>Add Payment Method</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="success-toast" class="toast-success hidden">
+    <div class="toast-content">
+        <div class="toast-icon">
+            <span class="check-icon">✔</span>
+        </div>
+        <span class="toast-message">Card added!</span>
+    </div>
+    <button class="toast-btn">Ok</button>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
+<script src="~/js/payment.js" asp-append-version="true"></script>

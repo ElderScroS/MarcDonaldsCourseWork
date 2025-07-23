@@ -1,0 +1,80 @@
+@model User
+
+<link href="~/css/auth/auth-modals.css" rel="stylesheet" asp-append-version="true"/>
+
+<a href="#" class="user_link" id="openModal">
+    <span>@Localizer["Sign in"]</span>
+</a>
+
+<div class="modal" id="modalSignin">
+    <span class="close" id="closeModalSignin">&times;</span>
+    <div class="title-modal">@Localizer["Sign in"]</div>
+    <form asp-controller="Auth" asp-action="SignIn" id="signinForm">
+        <div class="input-div">
+            <input id="signinEmailInput" asp-for="Email" type="text" placeholder="@Localizer["Email"]" required>
+            <div id="signupEmailHintYes" class="signup-email-hint"></div>
+        </div>
+        <div class="input-div">
+            <input id="signinPasswordInput" asp-for="PasswordHash" type="password" placeholder="@Localizer["Password"]" required>
+        </div>
+        <div id="signinUserExistingHint" class="password-hint"></div>
+        <div class="btn-div">
+            <button class="submit" id="signinSubmit" type="submit">@Localizer["Sign in"]</button>
+        </div>
+        <div class="links">
+            <div class="signup-div-link">
+                @Localizer["No account yet?"] <a id="signupLinkFromSignin">@Localizer["Sign up now"]</a>
+            </div>
+            <div class="forgotPassword-div-link">
+                <a id="forgotPasswordLinkFromSignin">@Localizer["Forgot Password?"]</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal" id="modalSignup">
+    <span class="close" id="closeModalSignup">&times;</span>
+    <div class="title-modal">@Localizer["Sign up"]</div>
+    <form asp-controller="Auth" asp-action="SignUp" id="signupForm">
+        <div class="input-div">
+            <input id="signupEmailInput" asp-for="Email" type="email" placeholder="@Localizer["Email"]" required>
+            <div id="signupEmailHint" class="signup-email-hint"></div>
+        </div>
+        <div class="input-div">
+            <input asp-for="PasswordHash" id="signupPasswordInput" type="password" placeholder="@Localizer["Password"]" required>
+            <div id="signupPasswordHint" class="password-hint">
+                @Localizer["At least 7 letters, 1 character, and 1 digit"]
+            </div>
+        </div>
+        <div class="btn-div">
+            <button class="submit" id="signupSubmit" type="submit">@Localizer["Sign up"]</button>
+        </div>
+        <div class="links">
+            <div class="signin-div-link">
+                @Localizer["Already have an account?"] <a id="signinLink">@Localizer["Sign in"]</a>
+            </div>
+            <div class="forgotPassword-div-link">
+                <a id="forgotPasswordLinkFromSignup">@Localizer["Forgot Password?"]</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal" id="modalForgotPassword">
+    <span class="close" id="closeModalForgotPassword">&times;</span>
+    <div class="title-modal">@Localizer["Forgot Password"]</div>
+    <form asp-controller="Auth" asp-action="ForgotPassword" class="forgot-password" id="forgotPasswordForm">
+        <div class="input-div">
+            <input id="forgotPasswordEmailInput" asp-for="Email" type="email" placeholder="@Localizer["Email"]" required>
+            <div id="forgotPasswordEmailHint" class="forgotPassword-email-hint"></div>
+        </div>
+        <div class="btn-div">
+            <button class="submit" id="forgotPasswordSubmit" type="submit">@Localizer["Send"]</button>
+        </div>
+        <div class="links">
+            <div class="signup-div-link">
+                @Localizer["No account yet?"] <a id="signupLinkFromForgotPassword">@Localizer["Sign up now"]</a>
+            </div>
+        </div>
+    </form>
+</div>

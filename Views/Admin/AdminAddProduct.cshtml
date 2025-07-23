@@ -1,0 +1,90 @@
+﻿@using MarkRestaurant.Data;
+@using MarkRestaurant.Data.Repositories;
+@using MarkRestaurant.Models;
+@using Microsoft.EntityFrameworkCore;
+@inject IMenuRepository menuRepository
+@model Product
+
+@{
+    ViewData["Title"] = "AdminAddProduct";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="~/css/admin/admin-add-product.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/admin/admin-main.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <title>Admin Add Product</title>
+    </head>
+    <body>
+        <partial name="~/Views/Shared/Navbars/_AdminNavbar.cshtml"/>
+
+        <div class="add-product-container">
+            <h1 class="admin-add-product-title">Add Product To Menu</h1>
+
+            <form asp-controller="Admin" asp-action="AddProductToMenu" method="post" enctype="multipart/form-data" onsubmit="return roundPrice()">
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" asp-for="Category" class="form-control" required>
+                        <option value="">Select Category</option>
+                        <option value="Burgers">Burgers</option>
+                        <option value="Potato">Potato</option>
+                        <option value="Snacks">Snacks</option>
+                        <option value="Drinks">Drinks</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input asp-for="Title" class="form-control" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" asp-for="Price" class="form-control" step="0.1" min="0.5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Product Image:</label>
+                    <input type="file" id="image" name="ImageFile" class="file-input" accept="image/*" onchange="previewImage(event)">
+                    <div class="image-preview-container">
+                        <img id="imagePreview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+                    </div>
+                </div>
+
+                <button type="submit" class="add-product-button">Add Product</button>
+            </form>
+        </div>
+
+        <script>
+            function previewImage(event) {
+                const imageInput = event.target;
+                const imagePreview = document.getElementById('imagePreview');
+
+                if (imageInput.files && imageInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        imagePreview.src = e.target.result;
+                        imagePreview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(imageInput.files[0]);
+                } else {
+                    imagePreview.style.display = 'none';
+                }
+            } 
+            
+            function roundPrice() {
+                const priceInput = document.getElementById('price');
+                const priceValue = parseFloat(priceInput.value);
+                if (!isNaN(priceValue)) {
+                    priceInput.value = priceValue.toFixed(2);
+                }
+
+                return true;
+            }
+        </script>
+    </body>
+</html>

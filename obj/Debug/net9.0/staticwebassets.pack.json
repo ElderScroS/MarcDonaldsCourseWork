@@ -1,0 +1,621 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-active-orders.css",
+      "PackagePath": "staticwebassets/css/admin/admin-active-orders.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-add-product.css",
+      "PackagePath": "staticwebassets/css/admin/admin-add-product.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-completed-orders.css",
+      "PackagePath": "staticwebassets/css/admin/admin-completed-orders.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-dashboard.css",
+      "PackagePath": "staticwebassets/css/admin/admin-dashboard.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-edit-product.css",
+      "PackagePath": "staticwebassets/css/admin/admin-edit-product.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-edit-user.css",
+      "PackagePath": "staticwebassets/css/admin/admin-edit-user.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-main.css",
+      "PackagePath": "staticwebassets/css/admin/admin-main.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-menu.css",
+      "PackagePath": "staticwebassets/css/admin/admin-menu.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-today-completed-orders.css",
+      "PackagePath": "staticwebassets/css/admin/admin-today-completed-orders.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/admin/admin-users.css",
+      "PackagePath": "staticwebassets/css/admin/admin-users.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/auth/auth-modals.css",
+      "PackagePath": "staticwebassets/css/auth/auth-modals.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/auth/confirm-email-succes.css",
+      "PackagePath": "staticwebassets/css/auth/confirm-email-succes.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/auth/email-confirm.css",
+      "PackagePath": "staticwebassets/css/auth/email-confirm.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/auth/forgot-password.css",
+      "PackagePath": "staticwebassets/css/auth/forgot-password.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/auth/reset-password-succes.css",
+      "PackagePath": "staticwebassets/css/auth/reset-password-succes.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/auth/reset-password.css",
+      "PackagePath": "staticwebassets/css/auth/reset-password.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/font-awesome.min.css",
+      "PackagePath": "staticwebassets/css/font-awesome.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/bootstrap.css",
+      "PackagePath": "staticwebassets/css/other/bootstrap.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/cookie.css",
+      "PackagePath": "staticwebassets/css/other/cookie.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/error.css",
+      "PackagePath": "staticwebassets/css/other/error.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/menu.css",
+      "PackagePath": "staticwebassets/css/other/menu.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/responsive.css",
+      "PackagePath": "staticwebassets/css/other/responsive.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/site.css",
+      "PackagePath": "staticwebassets/css/other/site.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/style.css",
+      "PackagePath": "staticwebassets/css/other/style.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/style.css.map",
+      "PackagePath": "staticwebassets/css/other/style.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/other/style.scss",
+      "PackagePath": "staticwebassets/css/other/style.scss"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/address/address-details.css",
+      "PackagePath": "staticwebassets/css/user/address/address-details.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/address/address-edit.css",
+      "PackagePath": "staticwebassets/css/user/address/address-edit.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/address/address-list.css",
+      "PackagePath": "staticwebassets/css/user/address/address-list.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/address/address-location.css",
+      "PackagePath": "staticwebassets/css/user/address/address-location.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/address/address-name.css",
+      "PackagePath": "staticwebassets/css/user/address/address-name.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/address/general.css",
+      "PackagePath": "staticwebassets/css/user/address/general.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/cart/cart.css",
+      "PackagePath": "staticwebassets/css/user/cart/cart.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/cart/delievery-section.css",
+      "PackagePath": "staticwebassets/css/user/cart/delievery-section.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/cart/payment-section.css",
+      "PackagePath": "staticwebassets/css/user/cart/payment-section.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/cart/products-section.css",
+      "PackagePath": "staticwebassets/css/user/cart/products-section.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/cart/summary-section.css",
+      "PackagePath": "staticwebassets/css/user/cart/summary-section.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/cart/tips-section.css",
+      "PackagePath": "staticwebassets/css/user/cart/tips-section.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/edit-profile.css",
+      "PackagePath": "staticwebassets/css/user/edit-profile.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/payment/add-card.css",
+      "PackagePath": "staticwebassets/css/user/payment/add-card.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/payment/general.css",
+      "PackagePath": "staticwebassets/css/user/payment/general.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/payment/payment-selection.css",
+      "PackagePath": "staticwebassets/css/user/payment/payment-selection.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/profile.css",
+      "PackagePath": "staticwebassets/css/user/profile.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/support.css",
+      "PackagePath": "staticwebassets/css/user/support.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/css/user/user-history.css",
+      "PackagePath": "staticwebassets/css/user/user-history.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/fonts/fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets/fonts/fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/fonts/fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets/fonts/fontawesome-webfont.woff"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/fonts/fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets/fonts/fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/burgers/bigtasty.jpg",
+      "PackagePath": "staticwebassets/images/burgers/bigtasty.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/burgers/cheeseburger.jpg",
+      "PackagePath": "staticwebassets/images/burgers/cheeseburger.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/burgers/hamburger.jpg",
+      "PackagePath": "staticwebassets/images/burgers/hamburger.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/drinks/cola750.jpg",
+      "PackagePath": "staticwebassets/images/drinks/cola750.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/drinks/fanta750.jpg",
+      "PackagePath": "staticwebassets/images/drinks/fanta750.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/about-img.png",
+      "PackagePath": "staticwebassets/images/other/about-img.png"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/applepay.png",
+      "PackagePath": "staticwebassets/images/other/applepay.png"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/googlepay.png",
+      "PackagePath": "staticwebassets/images/other/googlepay.png"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/hero-bg.jpg",
+      "PackagePath": "staticwebassets/images/other/hero-bg.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/mastercard.jpg",
+      "PackagePath": "staticwebassets/images/other/mastercard.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/money.png",
+      "PackagePath": "staticwebassets/images/other/money.png"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/o1.jpg",
+      "PackagePath": "staticwebassets/images/other/o1.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/o2.jpg",
+      "PackagePath": "staticwebassets/images/other/o2.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/person.jpg",
+      "PackagePath": "staticwebassets/images/other/person.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/placeholder.png",
+      "PackagePath": "staticwebassets/images/other/placeholder.png"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/other/visa.jpg",
+      "PackagePath": "staticwebassets/images/other/visa.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/potato/4725ac4a-f7c6-4de4-9973-5912b21885e3_logoEmer.png",
+      "PackagePath": "staticwebassets/images/potato/4725ac4a-f7c6-4de4-9973-5912b21885e3_logoEmer.png"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/potato/frize.jpg",
+      "PackagePath": "staticwebassets/images/potato/frize.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/potato/rustic.jpg",
+      "PackagePath": "staticwebassets/images/potato/rustic.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/snacks/box.jpg",
+      "PackagePath": "staticwebassets/images/snacks/box.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/snacks/shrimp.jpg",
+      "PackagePath": "staticwebassets/images/snacks/shrimp.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/snacks/strips.jpg",
+      "PackagePath": "staticwebassets/images/snacks/strips.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/images/snacks/wings.jpg",
+      "PackagePath": "staticwebassets/images/snacks/wings.jpg"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/address.js",
+      "PackagePath": "staticwebassets/js/address.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/auth-modals.js",
+      "PackagePath": "staticwebassets/js/auth-modals.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/bootstrap.js",
+      "PackagePath": "staticwebassets/js/bootstrap.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/cart.js",
+      "PackagePath": "staticwebassets/js/cart.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/cookie.js",
+      "PackagePath": "staticwebassets/js/cookie.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/edit-profile.js",
+      "PackagePath": "staticwebassets/js/edit-profile.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/jquery-3.4.1.min.js",
+      "PackagePath": "staticwebassets/js/jquery-3.4.1.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/menu.js",
+      "PackagePath": "staticwebassets/js/menu.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/navbar.js",
+      "PackagePath": "staticwebassets/js/navbar.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/payment.js",
+      "PackagePath": "staticwebassets/js/payment.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/profile.js",
+      "PackagePath": "staticwebassets/js/profile.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/reset-password.js",
+      "PackagePath": "staticwebassets/js/reset-password.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/LICENSE",
+      "PackagePath": "staticwebassets/lib/bootstrap"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery/dist/jquery.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery/dist/jquery.min.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery/dist/jquery.min.map",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery/dist/jquery.slim.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery/dist/jquery.slim.min.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.min.js"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/lib/jquery/dist/jquery.slim.min.map",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.min.map"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/sounds/notification.mp3",
+      "PackagePath": "staticwebassets/sounds/notification.mp3"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/usersImg/user_34de7cf1-e9fb-4a07-95e7-45c90ab91f2f.png",
+      "PackagePath": "staticwebassets/usersImg/user_34de7cf1-e9fb-4a07-95e7-45c90ab91f2f.png"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/usersImg/user_a30adebf-13db-436d-841e-3362b7b30dcd.png",
+      "PackagePath": "staticwebassets/usersImg/user_a30adebf-13db-436d-841e-3362b7b30dcd.png"
+    },
+    {
+      "Id": "/Users/marknikulov11gmail.com/Downloads/MarcDonalds/wwwroot/usersImg/user_f4e62f5c-3d77-4e51-81b7-a1973f4a9cb4.png",
+      "PackagePath": "staticwebassets/usersImg/user_f4e62f5c-3d77-4e51-81b7-a1973f4a9cb4.png"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.MarcDonalds.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.MarcDonalds.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.build.MarcDonalds.props",
+      "PackagePath": "build\\MarcDonalds.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.MarcDonalds.props",
+      "PackagePath": "buildMultiTargeting\\MarcDonalds.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.MarcDonalds.props",
+      "PackagePath": "buildTransitive\\MarcDonalds.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

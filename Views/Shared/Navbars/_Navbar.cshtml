@@ -1,0 +1,205 @@
+@using System.Globalization
+@using Azure.Core
+@using MarkRestaurant.Data.Repositories;
+@using Microsoft.IdentityModel.Tokens
+@inject IAddressRepository addressRepository
+
+@{
+    string? currentPage = ViewData["Title"] as string;
+
+    var lang = CultureInfo.CurrentUICulture.ToString();
+}
+
+@if (currentPage == "Index") {
+    <div class="bg-box">
+        <img src="~/images/other/hero-bg.jpg" alt="">
+    </div>
+}
+
+@if (currentPage != "Edit Profile") {
+    <header class="header_section header-line">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand-btn" asp-controller="Home" asp-action="Index">
+                    <span class="typing-text" id="typingText">MarcDonalds</span>            
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""></span>
+                </button>
+
+                @if (currentPage == "Profile")
+                {
+                    Address? selectedAddress = null;
+
+                    selectedAddress = addressRepository.GetSelectedAddressAsync(User).Result!;
+                    
+                    <div class="address-div">
+                        <button class="address-btn" id="addressBtn">
+                            @if (selectedAddress != null)
+                            {
+                                <div class="i-address">
+                                    @if (selectedAddress.Title == "Apartment") {
+                                        <i class="fa-regular fa-building"></i>
+                                    }
+                                    else if (selectedAddress.Title == "Cottage") {
+                                        <i class="fa-regular fa-house"></i>
+                                    }
+                                    else if (selectedAddress.Title == "Work") {
+                                        <i class="fa-regular fa-briefcase"></i>
+                                    }
+                                    else {
+                                        <i class="fa-regular fa-location-dot"></i> 
+                                    }
+                                </div>
+                                
+                                <span>
+                                    (@selectedAddress.Street@(
+                                        !string.IsNullOrEmpty(selectedAddress.HouseNumber)
+                                            ? $", {selectedAddress.HouseNumber}"
+                                            : ""
+                                    ))
+                                </span>
+                            }
+                            else
+                            {
+                                <div class="i-address">
+                                    <i class="fa-regular fa-location-dot"></i> 
+                                </div>
+                                <span>None</span>
+                            }
+                            <i class="fa-solid fa-chevron-down arrow"></i>
+                        </button>
+                    </div>
+
+                    <partial name="~/Views/Shared/Sections/_Address.cshtml" />
+                }
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link @(currentPage == "Order History" || currentPage == "Cart" || currentPage == "Edit Profile" || currentPage == "Profile" ? "hide-nav" : "") scroll-link" href="#main">
+                                @Localizer["Home"]
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentPage == "Order History" || currentPage == "Cart" || currentPage == "Edit Profile" || currentPage == "Profile" ? "hide-nav" : "") scroll-link" href="#menu">
+                                @Localizer["Menu"]
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentPage == "Order History" || currentPage == "Cart" || currentPage == "Edit Profile" || currentPage == "Profile" ? "hide-nav" : "") scroll-link" href="#about">
+                                @Localizer["About"]
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentPage == "Order History" || currentPage == "Cart" || currentPage == "Edit Profile" || currentPage == "Profile" ? "hide-nav" : "") scroll-link" href="#about">
+                                @Localizer["Help"]
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="user_option">
+                        @if (User?.Identity?.IsAuthenticated == true) 
+                        {
+                            @if (currentPage != "Cart") 
+                            {
+                                <div id="cart-link" class="cart-link @(currentPage == "Edit Profile" ? "hide-nav" : "")">
+                                    <a class="btn btn-link p-0" asp-controller="User" asp-action="Cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            }
+
+                            <button class="user-dropdown-button @(currentPage == "Index" ? "isIndex" : "")" id="dropdownButton">
+                                <img class="profileImage" src="@Model.ProfileImagePath" width="35">
+                                <i class="fa-solid fa-chevron-down arrow"></i>
+                            </button>
+
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <ul class="drop-ul">
+                                    <li class="drop-li">
+                                        <a asp-controller="User" asp-action="Profile">
+                                            <img class="profileImageDropdown" id="profileImage" src="@Model.ProfileImagePath">
+                        
+                                            <div class="profile">
+                                                <p class="profile-p">@Localizer["Profile"]</p>
+                                                <p class="name-surname">@Model.Name @Model.Surname</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="drop-li">
+                                        <a asp-controller="User" asp-action="OrderHistory">
+                                            @Localizer["History"]
+                                        </a>
+                                    </li>
+                                    <li class="drop-li">
+                                        <button class="languageBtn @(currentPage == "Index" ? "index" : "")" id="languageBtn">
+                                            @Localizer["Language"]: <p class="lang" id="lang">
+                                                @if (lang == "en") {
+                                                    <p>English</p>
+                                                }
+                                                else {
+                                                    <p>Русский</p>
+                                                }
+                                            </p>
+                                        </button>
+
+                                        <ul class="language-select" id="language">
+                                            <li class="lang-li">
+                                                <a asp-controller="Culture" asp-action="SetCulture" asp-route-culture="en" asp-route-returnUrl="@Context.Request.Path">English</a>
+                                            </li>
+                                            <li class="lang-li">
+                                                <a asp-controller="Culture" asp-action="SetCulture" asp-route-culture="ru" asp-route-returnUrl="@Context.Request.Path">Русский</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="drop-li">
+                                        <a asp-controller="User" asp-action="Support">
+                                            @Localizer["Support"]
+                                        </a>
+                                    </li>
+                                    <hr>
+                                    <li class="drop-li">
+                                        <a asp-controller="Auth" asp-action="Logout">
+                                            @Localizer["Logout"]
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                           <button class="lang-toggle" id="languageBtn">
+                                <p class="lang-current" id="lang">
+                                    @if (lang == "en") {
+                                        <span>en</span>
+                                    } else {
+                                        <span>ru</span>
+                                    }
+                                </p>
+                            </button>
+
+                            <ul class="lang-dropdown" id="language">
+                                <li class="lang-item" data-culture="en"><a href="#" class="lang-link">en</a></li>
+                                <li class="lang-item" data-culture="ru"><a href="#" class="lang-link">ru</a></li>
+                            </ul>
+
+                            <partial name="~/Views/Shared/Sections/_AuthModals.cshtml" />
+                        }
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+}
+
+<link href="~/css/other/style.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/other/site.css" rel="stylesheet" asp-append-version="true"/>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>    
+<script src="~/js/navbar.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/auth-modals.js" asp-append-version="true"></script>
+<script src="//code.jivo.ru/widget/aNOv7TUbGH" async></script>
+

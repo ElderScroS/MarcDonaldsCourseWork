@@ -1,0 +1,118 @@
+﻿@using MarkRestaurant.Data.Repositories;
+@inject IUserRepository userRepository;
+@inject IDashboardRepository dashboardRepository;
+
+@{
+    ViewData["Title"] = "Admin Users";
+
+    var users = userRepository.GetAllUsers().Result;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="~/css/admin/admin-users.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/admin/admin-main.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+        <title>Users</title>
+    </head>
+    <body>
+        <partial name="~/Views/Shared/Navbars/_AdminNavbar.cshtml"/>
+            <div class="admin-users-container">
+                <h1 class="admin-users-title">User Management</h1>
+
+                @if (users != null && users.Any())
+                {           
+                    <table class="admin-users-table">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Email Confirmed</th>
+                                <th>Phone Number</th>
+                                <th>Total Spent</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in users)
+                            {
+                                <tr>
+                                    <td>@user.Name @user.Surname @user.MiddleName</td>
+                                    <td>@user.Age</td>
+                                    <td>@user.Email</td>
+                                    <td>@(user.EmailConfirmed ? "Yes" : "No")</td>
+                                    <td>@user.PhoneNumber</td>
+                                    <td>₼ @dashboardRepository.GetTotalSpentByUserAsync(user).Result</td>
+                                    <td>
+                                        <form asp-controller="Admin" asp-action="AdminEditUser" style="display:inline;">
+                                            <input type="hidden" name="email" value="@user.Email"/>
+                                            <button type="submit" class="edit-button">
+                                                <i style="color: black" class="fas fa-pencil-alt"></i>
+                                            </button>
+                                        </form>
+                                        <button class="delete-button" data-email="@user.Email" data-name="@user.Name @user.Surname">
+                                            X
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else {
+                    <p class="empty-error">Empty</p>
+                }
+            </div>
+
+            <div id="deleteModal" class="modal">
+                <div class="modal-content">
+                    <p id="deleteMessage">
+                        Are you sure you want to delete <span id="userName" class="highlight-object"></span>?
+                    </p>
+                    <div class="modal-buttons">
+                        <button id="cancelDelete" class="cancel-button">No</button>
+                        <form id="confirmDeleteForm" asp-controller="Admin" asp-action="DeleteUser" method="post">
+                            <input type="hidden" name="email" id="deleteEmail"/>
+                            <button type="submit" class="confirm-button">Yes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const modal = document.getElementById("deleteModal");
+                const deleteMessage = document.getElementById("deleteMessage");
+                const userNameSpan = document.getElementById("userName"); 
+                const deleteEmailInput = document.getElementById("deleteEmail");
+                const confirmDeleteForm = document.getElementById("confirmDeleteForm");
+
+                document.querySelectorAll(".delete-button").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const userEmail = this.getAttribute("data-email");
+                        const userName = this.getAttribute("data-name");
+
+                        userNameSpan.textContent = userName;
+                        deleteEmailInput.value = userEmail;
+
+                        modal.style.display = "flex";
+                    });
+                });
+
+                document.getElementById("cancelDelete").addEventListener("click", function () {
+                    modal.style.display = "none";
+                });
+
+                window.onclick = function (event) {
+                    if (event.target === modal) {
+                        modal.style.display = "none";
+                    }
+                };
+            });
+        </script>
+    </body>
+</html>

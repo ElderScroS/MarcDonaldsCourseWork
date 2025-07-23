@@ -1,0 +1,125 @@
+
+.delivery-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+    flex: 1;
+    max-width: 43vw;
+}
+
+.delivery-box {
+    border-radius: 12px;
+    padding: 23px 19px 25px 19px;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.delivery-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    padding: 0;
+    cursor: pointer;
+}
+
+.address-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-bottom: 1vh;
+}
+
+.delivery-item .icon-address {
+    font-size: 16px;
+    margin-right: 2.3vh;
+    color: white;
+    flex-shrink: 0;
+}
+.delivery-item .arrow-address {
+    font-size: 12px;
+    margin-right: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    flex-shrink: 0;
+}
+.delivery-item .address-name {
+    display: flex;
+    gap: 8px;
+    font-size: 2.3vh;
+    color: #fff;
+}
+
+.address-name .address-street-house {
+    margin-top: 0.3vh;
+    font-weight: lighter;
+    font-size: 1.9vh;
+    color: #aaa;
+}
+
+.delivery-box hr {
+    margin: 1.5vh;
+    margin-left: 0; margin-right: 0;
+    border: none;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.741);
+}
+
+.toggle-row {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: lighter;
+    font-size: 2.3vh;
+    color: #fff;
+}
+.switch {
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    width: 50px;  
+    height: 25px; 
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 6px; 
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px; 
+    width: 20px;   
+    left: 3px;
+    bottom: 2.5px;
+    background-color: #000000;
+    transition: .4s;
+    border-radius: 6px;
+}
+
+.switch input:checked + .slider {
+    background-color: #57abf5; 
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(26px);
+}

@@ -1,0 +1,70 @@
+.tips-section {
+  max-width: 43vw;
+}
+
+.tips-div {
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 3vh;
+  color: #aaa;
+  background-color: transparent;
+}
+
+.info-amount {
+  display: flex;
+  padding-left: 1vh; padding-right: 1vh;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tips-info {
+  font-size: 15px;
+  color: #aaa;
+  margin: 0;
+}
+
+.tips-amount {
+  font-size: 15px;
+  color: #aaa;
+}
+
+.tip-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2vh;
+  gap: 9px;
+}
+
+.tip-btn {
+  background-color: transparent;
+  border: 2px solid #333;
+  border-radius: 16px;
+  padding: 5px 15px;
+  color: #fff;
+  text-align: center;
+  gap: 1vh;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tip-btn:hover {
+    background-color: #00bfff20;
+    border-color: #00bfff;
+}
+.tip-btn.selected {
+  border-color: #00bfff;
+}
+#percent {
+    font-size: 16px;
+}
+.tip-btn.selected #percent {
+    color: #00bfff;
+}
+
+.tip-btn #amount {
+  font-size: 12px;
+  color: #aaa;
+}

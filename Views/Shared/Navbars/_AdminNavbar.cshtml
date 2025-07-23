@@ -1,0 +1,50 @@
+@{
+    string? currentPage = ViewData["Title"] as string;
+}
+
+<div class="navbar">
+    <div class="nav-item">
+        <form asp-controller="Admin" asp-action="AdminDashboard" method="post">
+            <button type="submit">
+                @if (currentPage == "Dashboard")
+                {
+                    <span class="active"><i class="fas fa-tachometer-alt"></i> @Localizer["Dashboard"]</span>
+                }
+                else
+                {
+                    <i class="fas fa-tachometer-alt"></i> @Localizer["Dashboard"]
+                }
+            </button>
+        </form>
+    </div>
+    <div class="nav-item">
+        <form asp-controller="Admin" asp-action="AdminUsers" method="post">
+            <button type="submit">
+                @if (currentPage == "Admin Users")
+                {
+                    <span class="active"><i class="fas fa-users"></i> @Localizer["Users"]</span>
+                }
+                else
+                {
+                    <i class="fas fa-users"></i> @Localizer["Users"]
+                }
+            </button>
+        </form>
+    </div>
+    <div class="nav-item">
+        <form asp-controller="Admin" asp-action="AdminMenu" method="post">
+            <button type="submit">
+                @if (currentPage == "Admin Menu")
+                {
+                    <span class="active"><i class="fas fa-boxes"></i> @Localizer["Menu"]</span>
+                }
+                else
+                {
+                    <i class="fas fa-boxes"></i> @Localizer["Menu"]
+                }
+            </button>
+        </form>
+    </div>
+</div>
+
+<a asp-controller="Home" asp-action="Index" class="exit-button">@Localizer["Exit"]</a>

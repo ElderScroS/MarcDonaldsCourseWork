@@ -1,0 +1,76 @@
+
+.filter-container {
+    text-align: center;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.filter-list {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    gap: 5px;
+}
+
+.flist-item {
+    width: 100px;
+    border-radius: 20px;
+    color: whitesmoke;
+    padding: 7px;
+    background-color: transparent;
+    font-size: 16px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.flist-item:hover {
+    background-color: #25232980;
+}
+
+.flist-item.active {
+    background-color: #2c2930;
+}
+
+.user_button {
+    display: inline-block;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.user_button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.cart-link a i {
+    display: inline-block;
+    color: #ffbe33;
+    font-size: 1.9vh;
+    transition: 0.2s ease;
+    margin: 0 15px;
+}
+
+.cart-link a i:hover {
+    color: #c7962c;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px); 
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hide-nav {
+    pointer-events: none;
+    opacity: 0;
+}

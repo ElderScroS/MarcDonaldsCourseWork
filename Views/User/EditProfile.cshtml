@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+@model User
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="~/css/user/edit-profile.css" rel="stylesheet" asp-append-version="true"/>
+    </head>
+    <body class="sub_page">
+        <div class="hero_area">
+            <partial name="~/Views/Shared/Navbars/_Navbar.cshtml" />
+        </div>
+        
+        <div class="container fade-in">
+            <div class="main-body">
+                <div class="row gutters-sm justify-content-center">
+                    <div class="col-md-10">
+                        <div class="card mb-3 bg-secondary text-white border-0">
+                            <div class="card-body bg-dark p-4">
+                                <form asp-controller="User" asp-action="Save" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                                    <div class="form-group d-flex align-items-center mb-3">
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="image-upload" onclick="document.getElementById('profileImage').click()">
+                                                <img id="imagePreview" src="@Model.ProfileImagePath" class="image-preview" alt="Profile Picture Preview" />
+                                                <i class="fas fa-camera upload-icon"></i>
+                                                <input type="file" accept="image/*" name="profileImage" id="profileImage" class="form-control" onchange="previewImage(event)" style="display: none;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="border-dark" />
+                                    <div class="form-group d-flex align-items-center mb-3">
+                                        <label class="col-sm-3">@Localizer["Name"]</label>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" asp-for="Name" class="form-control" placeholder="@Localizer["Enter name"]" value="@Model.Name" id="name" pattern="[A-Za-zА-Яа-яЁё\s-]+" title="Only letters and cannot be empty.">
+                                        </div>
+                                    </div>
+                                    <hr class="border-dark" />
+                                    <div class="form-group d-flex align-items-center mb-3">
+                                        <label class="col-sm-3">@Localizer["Surname"]</label>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" asp-for="Surname" class="form-control" placeholder="@Localizer["Enter surname"]" value="@Model.Surname" id="surname" pattern="[A-Za-zА-Яа-яЁё\s-]+" title="Only letters and cannot be empty.">
+                                        </div>
+                                    </div>
+                                    <hr class="border-dark" />
+                                    <div class="form-group d-flex align-items-center mb-3">
+                                        <label class="col-sm-3">@Localizer["Middle Name"]</label>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" asp-for="MiddleName" class="form-control" placeholder="@Localizer["Enter middle name"]" value="@Model.MiddleName" id="middleName" pattern="[A-Za-zА-Яа-яЁё\s-]+" title="Only letters and cannot be empty.">
+                                        </div>
+                                    </div>
+                                    <hr class="border-dark" />
+                                    <div class="form-group d-flex align-items-center mb-3">
+                                        <label class="col-sm-3">@Localizer["Age"]</label>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="number" asp-for="Age" class="form-control" placeholder="@Localizer["Enter age"]" min="10" max="100" title="Age must be between 10 and 100" value="@Model.Age" id="age">
+                                        </div>
+                                    </div>
+                                    <hr class="border-dark" />
+                                    <div class="form-group d-flex align-items-center mb-3">
+                                        <label class="col-sm-3">@Localizer["Phone Number"]</label>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="tel" asp-for="PhoneNumber" class="form-control" placeholder="@Localizer["Enter phone number"]" value="@Model.PhoneNumber" id="phoneNumber" pattern="^\+?\d{1,3}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,3}[-.\s]?\d{1,4}$" title="Phone number must start with a plus sign (+) followed by digits.">
+                                        </div>
+                                    </div>
+                                    <hr class="border-dark" />
+                                    <div class="btns">
+                                        @if (!string.IsNullOrEmpty(Model?.Name))
+                                        {
+                                            <button class="button btn-cancel" type="submit" id="cancel-button" style="border-radius: 50px;" name="cancelBtn" value="cancelBtn">@Localizer["Cancel"]</button>
+                                        }
+                                        <button class="button btn-submit" type="submit" id="save-button" style="opacity: 0.5; pointer-events: none;">@Localizer["Save"]</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="~/js/edit-profile.js"></script>
+        <partial name="~/Views/Shared/Sections/_Footer.cshtml" />
+    </body>
+</html>

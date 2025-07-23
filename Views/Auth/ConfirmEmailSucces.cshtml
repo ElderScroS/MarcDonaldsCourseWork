@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/auth/confirm-email-succes.css" rel="stylesheet" asp-append-version="true"/>
+    <title>@Localizer["Email Confirmation Success"]</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="checkmark">
+                ✅
+            </div>
+            <h2 class="h2">@Localizer["Your email is confirmed!"]</h2>
+            <p class="p">
+                @Localizer["You can now"]
+                <a class="a" asp-controller="Home" asp-action="Index">@Localizer["log in"]</a>
+                @Localizer["to your account."]
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+.modal-title-edit {
+    font-size: 4vh;
+    font-weight: 800;
+    text-align: center;
+    margin: 0vh 0 1vh 2vh;
+    color: #fff;
+}
+
+.exactly-message-edit {
+    font-size: 16px;
+    color: #b4b3b3;
+    text-align: center;   
+    margin-bottom: 3vh; 
+}
+
+.details-form-edit {
+    padding: 0 2vh;
+}
+
+.field-group-edit {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #444;
+    background: #1f1f1f;
+    transition: 0.3s ease;
+    margin-bottom: 16px;
+}
+.field-group-edit:focus-within {
+    border-color: #4fb3ff;
+}
+.field-group-edit input {
+    width: 100%;
+    padding: 1.2em 3em 0.6em 0.7em;
+    background: transparent;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+    resize: none;
+}
+.field-group-edit input:focus {
+    outline: none;
+}
+.field-group-edit input:hover {
+    border-color: #4fb3ff92;
+}
+.field-group-edit label {
+    position: absolute;
+    left: 0.7em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.3s ease;
+    background-color: transparent;
+    padding: 0 0.2em;
+}
+
+.field-group-edit input:focus + label {
+    top: 0.8em;
+    font-size: 0.75em;
+    color: #4fb3ff92;
+}
+
+.field-group-edit input:not(:focus):not(:placeholder-shown) + label {
+    top: 0.8em;
+    font-size: 0.75em;
+    color: #888;
+}
+
+.error-label-edit {
+    margin-left: 8px;
+    margin-top: -2vh;
+    margin-bottom: 12px;
+    font-size: 1.7vh;
+    display: none;
+    color: red !important;
+}
+
+.optional-label-edit {
+    font-size: 12px;
+    text-align: left;
+    color: #888;
+    margin-left: 8px;
+    margin-top: -2vh;
+    margin-bottom: 12px;
+}
+
+.location-footer-edit {
+    text-align: center;
+    margin-bottom: 3vh;
+    padding: 0 2vh 0 2vh;
+}
+.location-footer-edit h5 {
+    font-weight: bold;
+}
+
+.location-footer-edit p {
+    font-size: 16px;
+    color: #b4b3b3;
+    padding-left: 1vh;
+}
+
+.map-container-small-edit {
+    height: 13vh;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    background-color: #1e1e1e;
+}
+
+.map-container-small-edit:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.map-container-small-edit canvas {
+    height: 13vh;
+    width: 100%;
+}
+
+.determine-button-edit {
+    width: 100%;
+    background-color: rgba(59, 128, 255, 0.075);
+    color: #57abf5;
+    border: none;
+    margin-top: 2vh;
+    gap: 2vh;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: lighter;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.determine-button-edit:hover {
+    background-color: rgba(59, 128, 255, 0.111);
+}
+
+/* Фиксированный футер */
+.save-footer-edit {
+    position: sticky;
+    bottom: 0;
+    background: #1a1a1a;
+    box-shadow: 0 -12px 24px -8px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    padding: 0 2vh 2vh 2vh;
+    border-radius: 12px;   
+}
+
+.save-btn-edit {
+    width: 100%;
+    background-color: #2176ae;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.save-btn-edit:disabled {
+    opacity: 0.7;
+}
+.save-btn-edit:hover {
+    background-color: #1d6595;
+}

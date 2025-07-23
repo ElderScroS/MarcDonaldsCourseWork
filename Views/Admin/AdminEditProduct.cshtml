@@ -1,0 +1,92 @@
+@model Product
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="~/css/admin/admin-edit-product.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/admin/admin-main.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <title>Edit Product</title>
+    </head>
+    <body>
+        <partial name="~/Views/Shared/Navbars/_AdminNavbar.cshtml"/>
+
+        <div class="edit-product-container">
+            <h1 class="edit-product-title">Edit Product</h1>
+            <form asp-controller="Admin" asp-action="EditProductFromMenu" method="post" enctype="multipart/form-data" onsubmit="return roundPrice()">
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" asp-for="Category" class="form-control">
+                        <option value="Burgers" selected="@(Model.Category == "Burgers" ? "selected" : null)">Burgers</option>
+                        <option value="Potato" selected="@(Model.Category == "Potato" ? "selected" : null)">Potato</option>
+                        <option value="Snacks" selected="@(Model.Category == "Snacks" ? "selected" : null)">Snacks</option>
+                        <option value="Drinks" selected="@(Model.Category == "Drinks" ? "selected" : null)">Drinks</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" asp-for="Title" value="@Model.Title" />
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" asp-for="Price" value="@Model.Price"/>
+                </div>
+
+                <div class="form-group">
+                    <label>In Stock:</label>
+                    <div class="radio-buttons">
+                        <label for="inStockYes">
+                            <input type="radio" id="inStockYes" name="inStock" value="true" @(Model.InStock ? "checked" : "") /> Yes
+                        </label>
+                        <label for="inStockNo">
+                            <input type="radio" id="inStockNo" name="inStock" value="false" @(!Model.InStock ? "checked" : "") /> No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Product Image:</label>
+                    <input type="file" id="image" name="ImageFile" class="file-input" accept="image/*" onchange="previewImage(event)">
+                    <div class="image-preview-container">
+                        <img id="imagePreview" class="image-preview" 
+                            src="@Model.ImageUrl" 
+                            alt="Product Image"
+                            style="display: @(string.IsNullOrEmpty(Model.ImageUrl) ? "none" : "block");">
+                    </div>
+                </div>
+
+                <button type="submit" class="save-button">Save Changes</button>
+            </form>
+        </div>
+        <script>
+            function previewImage(event) {
+                const imageInput = event.target;
+                const imagePreview = document.getElementById('imagePreview');
+
+                if (imageInput.files && imageInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        imagePreview.src = e.target.result;
+                        imagePreview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(imageInput.files[0]);
+                }
+            } 
+            
+            function roundPrice() {
+                const priceInput = document.getElementById('Price'); 
+                const priceValue = parseFloat(priceInput.value);
+                if (!isNaN(priceValue)) {
+                    priceInput.value = priceValue.toFixed(2);
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>

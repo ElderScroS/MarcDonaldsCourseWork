@@ -1,0 +1,225 @@
+﻿.menu-container {
+    background-color: #1e1e2f;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.admin-menu-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 650;
+    font-size: 30px;
+    color: #ffffff;
+    transition: color 0.5s ease;
+}
+
+.filter-container {
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    justify-content: center;
+    position: relative;
+}
+
+.filter-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+    .filter-list .flist-item {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 10px 20px;
+        background-color: #34344a;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        border-radius: 5px;
+    }
+
+        .filter-list .flist-item:hover {
+            background-color: #ff5c58;
+            transform: translateY(-2px);
+        }
+
+    .filter-list .active {
+        background-color: #ff5c58;
+    }
+
+    .add-product-button {
+        margin-left: auto;
+        position: absolute;
+        top: 0;
+        right: 0;    
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+        .add-product-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 15px;
+    max-width: calc(250px * 5 + 15px * 4);
+}
+
+.product {
+    background-color: #44444d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    opacity: 0;
+    display: none;
+}
+
+    .product:hover {
+        transform: scale(1.02) translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .product.hide {
+        animation: fadeOut 0.5s ease forwards;
+    }
+
+    .product.show {
+        display: block;
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    .product img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+    }
+
+.product-info {
+    border-top: 2px solid black;
+    padding-top: 10px;
+}
+
+    .product-info h3 {
+        font-size: 18px;
+        margin: 15px 0;
+        color: white;
+    }
+
+    .product-info p {
+        font-size: 16px;
+        color: #d1d1d1;
+    }
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 7px; 
+}
+
+.delete-button-menu {
+    background-color: #ff5c58;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    .delete-button-menu:hover {
+        background-color: #d94743;
+        transform: scale(1.05);
+    }
+
+.edit-button {
+    background-color: #27ae60;
+    color: #ffffff;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    .edit-button:hover {
+        background-color: #229954;
+        transform: scale(1.05);
+    }
+
+    .edit-button i {
+        color: black;
+        margin: 0;
+        font-size: 16px;
+    }
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .nav-item {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .filter-list .flist-item {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+}

@@ -1,0 +1,28 @@
+@model User?
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.Identity;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="hero_area">
+            <partial name="~/Views/Shared/Navbars/_Navbar.cshtml"/>
+
+            <partial name="~/Views/Shared/Sections/_Slider.cshtml"/>
+        </div>
+        
+        <partial name="~/Views/Shared/Sections/_CookieBanner.cshtml"/>
+
+        <partial name="~/Views/Shared/Sections/_Offer.cshtml"/>
+
+        <partial name="~/Views/Shared/Sections/_Menu.cshtml"/>
+
+        <partial name="~/Views/Shared/Sections/_About.cshtml"/>
+
+        <partial name="~/Views/Shared/Sections/_Footer.cshtml"/> 
+    </body>
+</html>

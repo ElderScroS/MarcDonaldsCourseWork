@@ -1,0 +1,114 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<link href="~/css/user/profile.css" rel="stylesheet" asp-append-version="true"/>
+
+<body class="sub_page">
+    <div class="hero_area">
+        <partial name="~/Views/Shared/Navbars/_Navbar.cshtml" />
+    </div>
+
+    <div class="container fade-in">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img id="imagePreview" src="@Model.ProfileImagePath" class="image-preview" alt="Profile Picture Preview" />
+                                <div class="mt-3">
+                                    <h4>@Model.Name @Model.Surname</h4>                                
+                                </div>
+                                <div class="btns">
+                                    <a class="edit-btn" asp-controller="User" asp-action="EditProfile">
+                                        @Localizer["Edit"]
+                                    </a>
+                                    <a class="delete-btn" href="#" id="openDeleteModal">
+                                        @Localizer["Delete"]
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <!-- Информация о пользователе -->
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Localizer["Name"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Model.Name
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Localizer["Surname"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Model.Surname
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Localizer["Middle Name"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Model.MiddleName
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Localizer["Age"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Model.Age
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Localizer["Email"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Model.Email
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Localizer["Phone Number"]</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Model.PhoneNumber
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal-content">
+            <p>@Localizer["Are you sure you want to delete your account? This will remove your information, orders, etc."]</p>
+            <div class="modal-buttons">
+                <button class="cancel-btn" id="closeModalBtn">@Localizer["No"]</button>
+                <a asp-controller="User" asp-action="DeleteUser" class="confirm-btn">@Localizer["Yes, I'm sure"]</a>
+            </div>
+        </div>
+    </div>
+
+    <partial name="~/Views/Shared/Sections/_Footer.cshtml" />
+    <script src="~/js/profile.js" asp-append-version="true"></script>
+</body>

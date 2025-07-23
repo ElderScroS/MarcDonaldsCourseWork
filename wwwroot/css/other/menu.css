@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+.footer-logo:hover {
+    color: #FFBE33;
+}
+
+/* ================================================================ */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    position: relative;
+    background-color: #1e1c21;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.product img {
+    margin: auto;
+    height: 18vh;
+    width: 22vh;
+    padding: 10px;
+    object-fit: cover;
+    border-radius: 3vh;
+    transition: all 0.3s;
+}
+
+.product img:hover {
+    transform: scale(1.03);
+}
+
+.product-info {
+    color: whitesmoke;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.product-info div {
+    flex-direction: row;
+}
+
+.product-info h3 {
+    margin: 0px 0px;
+    font-size: 16px;
+}
+
+.product-info p {
+    margin: 4px 1px;
+    font-size: 14px;
+    color: #57abf5;
+}
+
+.product-info p.price {
+    font-size: 16px;
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: left;
+    margin-top: 15px;
+}
+
+.cart-actions {
+    display: flex;
+    align-items: left;
+}
+
+.add-to-cart-btn {
+    background-color: rgba(59, 128, 255, 0.075);
+    color: #57abf5;
+    border: none;
+    width: 70%;
+    padding: 1.7vh;
+    border-radius: 30px;
+    font-weight: lighter;
+    cursor: pointer;
+    font-size: 2vh;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: rgba(59, 128, 255, 0.154);
+}
+
+.quantity-controls {
+    background-color: rgba(59, 128, 255, 0.075);
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-radius: 8px;
+    padding: 1vh;
+    gap: 3vh;
+}
+
+.cart-increase,
+.cart-decrease {
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #000000;
+    color: #57abf5;
+}
+
+.cart-increase:hover, .cart-decrease:hover {
+    background-color: #0f0e0e;
+    transform: scale(1.05);
+}
+
+.product-quantity {
+    color: #57abf5;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.floating-quantity {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #57abf5;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: rgba(59, 128, 255, 0.168);
+    padding: 2px 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 10;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.dark-modal {
+    background: #1e1c21;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 0 10px #000;
+}
+
+#closeModalBtn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+#closeModalBtn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#closeModalBtn:hover {
+    background: #ffffffaa;
+}
+
+.to-profile {
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.to-profile:hover {
+    color: #3f91ff;
+}
+
+.d-none {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.modal-overlay.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.modal-overlay.fade-out {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+.no-scroll {
+    overflow: hidden;
+}

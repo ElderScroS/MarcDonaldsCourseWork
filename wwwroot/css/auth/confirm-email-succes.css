@@ -1,0 +1,90 @@
+﻿body {
+    background-color: #121212; 
+    color: #ffffff; 
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s; 
+}
+
+.card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 300px;
+    transform: translateY(-20px);
+    animation: slideIn 0.5s forwards;
+}
+
+.checkmark {
+    font-size: 80px; 
+    color: #31db36; 
+    animation: bounce 0.6s ease forwards; 
+    margin-bottom: 15px;
+}
+
+.h2 {
+    margin: 0 0 15px 0;
+    color: white;
+    font-size: 1.5em;
+}
+
+.p {
+    color: white;
+    line-height: 1.5;
+}
+
+.a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .a:hover {
+        text-decoration: underline; 
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}

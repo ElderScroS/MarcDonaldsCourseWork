@@ -1,0 +1,494 @@
+﻿@model User;
+@using MarkRestaurant.Data.Repositories;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@using System.Globalization
+@using Azure.Core
+@using Microsoft.IdentityModel.Tokens
+@inject IAddressRepository addressRepository
+@inject ICartRepository cartRepository
+@inject ICardRepository cardRepository
+
+@{
+    ViewData["Title"] = "Cart";
+
+    var cart = cartRepository.GetCartByUserId(Model.Id).Result;
+}
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet" />
+<link href="~/css/user/cart/cart.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/css/user/cart/products-section.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/css/user/cart/summary-section.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/css/user/cart/delievery-section.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/css/user/cart/payment-section.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/css/user/cart/tips-section.css" rel="stylesheet" asp-append-version="true" />
+
+<body class="sub_page">
+    <div class="hero_area">
+        <partial name="~/Views/Shared/Navbars/_Navbar.cshtml" />
+    </div>
+
+    <section class="cart-container @(cart.Items.Count == 0 ? "isZero" : "")">
+        @if (cart.Items.Count != 0) {
+            <div class="map-fullwidth-new">
+                <div class="map-container-new">
+                    <div id="map-new" class="mapbox-map-new"></div>
+                </div>
+            </div>
+
+            <span id="origin-lat-new" data-lat="@cart.SendToAddress!.Latitude"></span>
+            <span id="origin-lng-new" data-lng="@cart.SendToAddress.Longitude"></span>
+            <span id="destination-lat-new" data-lat="40.41236787231929"></span>
+            <span id="destination-lng-new" data-lng="49.84615389213683"></span>
+        }
+
+        <div class="content-container">
+            <p class="empty-message">
+                @Localizer["Your order is lonely without items. Let's add some!"]
+            </p>
+
+            @if (cart.Items.Count != 0) 
+            {
+                Address? selectedAddress = null;
+
+                selectedAddress = addressRepository.GetSelectedAddressAsync(User).Result!;
+
+                <partial name="~/Views/Shared/Sections/_Address.cshtml" />
+                <partial name="~/Views/Shared/Sections/_Payment.cshtml" />
+
+                decimal totalPrice = await cartRepository.GetTotalPrice(Model.Id);
+
+                <div class="cart-layout">
+                    <div class="left-side">
+                        <div class="delivery-section">
+                            <h3 class="title-section">@Localizer["Where?"]</h3>
+                            <div class="delivery-box">
+                               <div class="delivery-item">
+                                    <div class="address-info" id="addressBtn">
+                                        @if (selectedAddress.Title == "Apartment")
+                                        {
+                                            <i class="fa-regular fa-building icon-address"></i>
+                                        }
+                                        else if (selectedAddress.Title == "Cottage")
+                                        {
+                                            <i class="fa-regular fa-house icon-address"></i>
+                                        }
+                                        else if (selectedAddress.Title == "Work")
+                                        {
+                                            <i class="fa-regular fa-briefcase icon-address"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa-regular fa-location-dot icon-address"></i>
+                                        }
+
+                                        <div class="address-name">
+                                            @selectedAddress.Title
+                                            <div class="address-street-house">
+                                                @selectedAddress.Street@(
+                                                    !string.IsNullOrEmpty(selectedAddress.HouseNumber)
+                                                        ? $", {selectedAddress.HouseNumber}"
+                                                        : ""
+                                                )
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right arrow-address"></i>
+                                </div>
+                                <hr>
+                                <div class="delivery-item toggle-row">
+                                    <div class="toggle-label">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <span class="put">Оставьте заказ у двери</span>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="leaveAtDoorCheckbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="products-section fade-in">
+                            <h3 class="title-section">@Localizer["Products in cart"]</h3>
+                            @foreach (var item in cart.Items)
+                            {
+                                <div class="product-card">
+                                    <img src="@item.Product!.ImageUrl" alt="@item.Product.Title" class="product-image" />
+                                    
+                                    <div class="product-info">
+                                        <h3>@item.Product.Title</h3>
+                                        <p>@item.Product.Price.ToString("0.00").Replace('.', ',') AZN</p>
+                                    </div>
+
+                                    <div class="cart-actions">
+                                        <div class="quantity-controls">
+                                            <button class="cart-decrease" data-product-id="@item.Product.Id">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <span class="product-quantity">@item.Quantity</span>
+                                            <button class="cart-increase" data-product-id="@item.Product.Id">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                        <div class="payment-section fade-in">
+                            <h3 class="title-section">@Localizer["Payment"]</h3>
+
+                            <div class="payment-method" id="paymentBtn">
+                                <div class="payment-info" >
+                                    @if (Model.PaymentMethod == PaymentMethod.Card) {
+                                        Card? selectedCard = await cardRepository.GetSelectedCardAsync(User);
+
+                                        <i class="fa-solid fa-credit-card icon-payment"></i>
+
+                                        @if (string.IsNullOrEmpty(selectedCard!.CardName)) {
+                                            var cardNumber = selectedCard?.CardNumber ?? "";
+                                            var first6 = cardNumber.Length >= 6 ? cardNumber[..6] : "";
+                                            var last4 = cardNumber.Length >= 4 ? cardNumber[^4..] : "";
+
+                                            <p class="payment-name">@first6******@last4</p>
+                                        }
+                                        else {
+                                            <p class="payment-name">@selectedCard.CardName</p>
+                                        }
+                                        
+                                    }
+                                    else if (Model.PaymentMethod == PaymentMethod.ApplePay) {
+                                        <i class="fa-solid fa-credit-card icon-payment"></i>
+                                        <p class="payment-name">@Localizer["Apple Pay"]</p>
+                                    }
+                                    else if (Model.PaymentMethod == PaymentMethod.GooglePay) {
+                                        <i class="fa-solid fa-credit-card icon-payment"></i>
+                                        <p class="payment-name">@Localizer["Google Pay"]</p>
+                                    }
+                                    else {
+                                        <i class="fa-solid fa-money-bill icon-payment"></i>
+                                        <p class="payment-name">@Localizer["Cash"]</p>
+                                    }
+                                </div>
+                                <i class="fa-solid fa-chevron-right arrow-payment"></i>
+                            </div>
+                        </div>
+                        <div class="tips-section fade-in @(Model.PaymentMethod == PaymentMethod.Cash ? "tips-hide" : "")">
+                            <h3 class="title-section">@Localizer["Tips"]</h3>
+
+                            <div class="tips-div">
+                                <div class="info-amount">
+                                    <p class="tips-info">They will receive 100% of your tip after delivery.</p>
+                                    <div class="tips-amount">0,00 AZN</div>
+                                </div>
+                                <div class="tip-options">
+                                    <button class="tip-btn selected">
+                                        <span id="percent" class="0tipsPercentage">0%</span>
+                                        <span id="amount" class="tipsAmount">0,00 AZN</span>
+                                    </button>
+                                    <button class="tip-btn">
+                                        <span id="percent" class="5tipsPercentage">5%</span>
+                                        <span id="amount" class="5tipsAmount"></span>
+                                    </button>
+                                    <button class="tip-btn">
+                                        <span id="percent" class="10tipsPercentage">10%</span>
+                                        <span id="amount" class="10tipsAmount"></span>
+                                    </button>
+                                    <button class="tip-btn">
+                                        <span id="percent" class="15tipsPercentage">15%</span>
+                                        <span id="amount" class="15tipsAmount"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-sight">
+                        <div class="checkout-summary">
+                            <div class="summary-card">
+                                <h3>Summary</h3>
+                                <p class="summary-line product-subtotal-line">
+                                    Product total: <span class="product-subtotal">@cart.Items.Sum(item => item.Product!.Price * item.Quantity).ToString("0.00").Replace('.', ',') AZN</span> 
+                                </p>
+                                <p class="summary-line">
+                                    Packaging fee: <span>0,50 AZN</span>
+                                </p>
+                                <p class="summary-line">
+                                    Service fee: <span>0,80 AZN</span>
+                                </p>
+                                <p class="summary-line delivery-cost">
+                                    Delivery (@(cart.Distance) km): <span>@(cart.DeliveryCost.ToString("0.00").Replace('.', ',')) AZN</span>
+                                </p>
+                                <hr />
+                                <p class="summary-total">
+                                    Total: 
+                                    <span class="total-amount">
+                                        <span class="final-price"></span> 
+                                        <span class="discount" style="@(cart.Items.Count >= 4 ? "" : "display:none;")">(-30%)</span>
+                                    </span>
+                                </p>
+                               <button class="order-button" data-delivery="@cart.DeliveryTime" id="orderButton">
+                                    <span class="order-text">Click to Order</span>
+                                    <span class="order-price"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <partial name="~/Views/Shared/Sections/_Footer.cshtml" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+    <script src="~/js/cart.js" asp-append-version="true"></script>
+   <script>
+        const originLatNew = parseFloat(document.getElementById('origin-lat-new').getAttribute('data-lat'));
+        const originLngNew = parseFloat(document.getElementById('origin-lng-new').getAttribute('data-lng'));
+        const destinationLatNew = parseFloat(document.getElementById('destination-lat-new').getAttribute('data-lat'));
+        const destinationLngNew = parseFloat(document.getElementById('destination-lng-new').getAttribute('data-lng'));
+
+        const blackMarkerEl = document.createElement('div');
+        blackMarkerEl.innerHTML = `
+            <div class="custom-marker">
+                <div class="time-circle">
+                    <span class="time-number">@Html.Raw(cart.DeliveryTime)</span>
+                    <small>MIN</small>
+                </div>
+                <div class="pin"></div>
+            </div>
+        `;
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFyazQ1IiwiYSI6ImNtYWh2OXBmaTBlazMyanNpaWwxeG96aGQifQ.EfZspWA49HiUZHOxsZ0dWA';
+        const mapNew = new mapboxgl.Map({
+            container: 'map-new',
+            style: 'mapbox://styles/mapbox/dark-v10',
+            center: [originLngNew, originLatNew],
+            zoom: 13
+        });
+
+        new mapboxgl.Marker({
+            element: blackMarkerEl,
+            offset: [0, -40]
+        })
+        .setLngLat([originLngNew, originLatNew])
+        .addTo(mapNew);
+
+        new mapboxgl.Marker({ color: 'green' })
+            .setLngLat([destinationLngNew, destinationLatNew])
+            .addTo(mapNew);
+
+        const bounds = new mapboxgl.LngLatBounds();
+        bounds.extend([originLngNew, originLatNew]);
+        bounds.extend([destinationLngNew, destinationLatNew]);
+
+        mapNew.fitBounds(bounds, {
+            padding: 100,
+            maxZoom: 16,
+            duration: 1000
+        });
+
+
+@* $('#orderButton').on('click', function () {
+    const leaveAtDoor = $('#leaveAtDoorCheckbox').is(':checked') ? "yes" : "no";
+
+    $.ajax({
+        url: '/User/CreateOrder',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(leaveAtDoor),
+        success: function (response) {
+            if (response.orderId) {
+                // Временно заменяем доставку на 5 секунд
+                const deliveryTimeSeconds = 5;
+
+                const endTime = Date.now() + deliveryTimeSeconds * 1000;
+                localStorage.setItem('orderId', response.orderId);
+                localStorage.setItem('orderEndTime', endTime);
+
+                showThankYouModal(response.orderId, deliveryTimeSeconds);
+            } else {
+                alert('Failed to receive order ID.');
+            }
+        },
+        error: function () {
+            alert('Something went wrong. Please try again.');
+        }
+    });
+}); *@
+
+
+
+
+$('#orderButton').on('click', function () {
+    const leaveAtDoor = $('#leaveAtDoorCheckbox').is(':checked') ? "yes" : "no";
+    const deliveryTimeMinutes = parseInt($('#orderButton').data('delivery'), 10);
+    const deliveryTimeSeconds = deliveryTimeMinutes * 60;
+
+    $.ajax({
+        url: '/User/CreateOrder',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(leaveAtDoor),
+        success: function (response) {
+            const endTime = Date.now() + deliveryTimeSeconds * 1000;
+
+            localStorage.setItem('orderNumber', response.orderNumber);
+            localStorage.setItem('orderId', response.orderId);
+            localStorage.setItem('orderEndTime', endTime);
+            localStorage.setItem('orderTotalSeconds', deliveryTimeSeconds);
+            localStorage.setItem('isModalOpen', 'true');
+
+            console.log(response.orderNumber)
+
+            showThankYouModal(response.orderNumber);
+        },
+        error: function () {
+            alert('Что-то пошло не так. Попробуйте ещё раз.');
+        }
+    });
+});
+
+function showThankYouModal(orderNumber) {
+    const endTime = parseInt(localStorage.getItem('orderEndTime'), 10);
+    let secondsLeft = Math.floor((endTime - Date.now()) / 1000);
+    if (secondsLeft < 0) secondsLeft = 0;
+
+    closeModal();
+
+    const overlay = $(`
+        <div class="overlay">
+            <div class="thank-you-modal">
+                <h2>Спасибо за заказ!</h2>
+                <p>Мы получили ваш заказ и начали готовку.</p>
+                <div class="progress-timer">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="timer-text" id="timerText">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="timer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span id="timeValue"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `);
+
+    $('body').append(overlay).css('overflow', 'hidden');
+
+    if (secondsLeft > 0) {
+        startCountdown(secondsLeft, orderNumber);
+    } else {
+        finishOrderAndShowArrival(orderNumber);
+    }
+}
+
+function startCountdown(seconds, orderNumber) {
+    const totalSeconds = parseInt(localStorage.getItem('orderTotalSeconds'), 10) || seconds;
+    const startTime = Date.now();
+    const endTime = startTime + seconds * 1000;
+    const fill = $('#progressFill');
+
+    if (window.orderInterval) clearInterval(window.orderInterval);
+    if (window.progressAnim) cancelAnimationFrame(window.progressAnim);
+
+    function update() {
+        const now = Date.now();
+        const elapsed = now - startTime;
+        const percent = Math.min((elapsed / (totalSeconds * 1000)) * 100, 100);
+        fill.css('width', percent + '%');
+
+        const secondsLeft = Math.max(0, Math.floor((endTime - now) / 1000));
+        updateProgress(secondsLeft);
+
+        if (secondsLeft > 0) {
+            window.progressAnim = requestAnimationFrame(update);
+        } else {
+            finishOrderAndShowArrival(orderNumber);
+        }
+    }
+
+    update();
+}
+
+function updateProgress(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    $('#timeValue').text(`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`);
+}
+
+function finishOrderAndShowArrival(orderNumber) {
+    const orderId = localStorage.getItem('orderId');
+
+    $.ajax({
+        url: '/User/FinishOrder',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(orderId),
+        success: function () {
+            localStorage.removeItem('orderNumber');
+            localStorage.removeItem('orderId');
+            localStorage.removeItem('orderEndTime');
+            localStorage.removeItem('orderTotalSeconds');
+            localStorage.removeItem('isModalOpen');
+
+            closeModal();
+
+            const audio = new Audio('/sounds/notification.mp3');
+            audio.play().catch(() => {});
+
+            setTimeout(() => {
+                showArrivalNotification(orderNumber);
+            }, 500);
+
+            setTimeout(() => {
+                closeModal();
+                location.reload();
+            }, 5500);
+        },
+        error: function () {
+            alert('Не удалось завершить заказ. Попробуйте снова.');
+        }
+    });
+}
+
+function showArrivalNotification(orderNumber) {
+    const overlay = $(`
+        <div class="overlay">
+            <div class="thank-you-modal">
+                <h2>Спасибо за заказ!</h2>
+                <p>Ваш заказ ${orderNumber} успешно завершён.</p>
+            </div>
+        </div>
+    `);
+    $('body').append(overlay).css('overflow', 'hidden');
+}
+
+function closeModal() {
+    $('.overlay').remove();
+    $('body').css('overflow', '');
+}
+
+$(document).ready(function () {
+    const isModalOpen = localStorage.getItem('isModalOpen') === 'true';
+    const storedOrderNumber = localStorage.getItem('orderNumber');
+    const storedEndTime = parseInt(localStorage.getItem('orderEndTime'), 10);
+
+    if (isModalOpen && storedOrderNumber && storedEndTime) {
+        const secondsLeft = Math.floor((storedEndTime - Date.now()) / 1000);
+        if (secondsLeft > 0) {
+            showThankYouModal(storedOrderNumber);
+        } else {
+            localStorage.removeItem('orderNumber');
+            localStorage.removeItem('orderEndTime');
+            localStorage.removeItem('isModalOpen');
+        }
+    }
+});
+
+</script>
+</body>

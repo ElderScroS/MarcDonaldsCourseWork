@@ -1,0 +1,173 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MarcDonalds
+build_property.RootNamespace = MarcDonalds
+build_property.ProjectDir = /Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = /Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminActiveOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5BY3RpdmVPcmRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminAddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5BZGRQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminCompletedOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5Db21wbGV0ZWRPcmRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5EYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminEditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5FZGl0UHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminEditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5FZGl0VXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5NZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminTodayCompletedOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5Ub2RheUNvbXBsZXRlZE9yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Admin/AdminUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5Vc2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Auth/ConfirmEmailSucces.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9Db25maXJtRW1haWxTdWNjZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Auth/EmailConfirm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9FbWFpbENvbmZpcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Auth/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9Gb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Auth/ResetPasswordSucces.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9SZXNldFBhc3N3b3JkU3VjY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Auth/ResetPasswordView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9SZXNldFBhc3N3b3JkVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Navbars/_AdminNavbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL05hdmJhcnMvX0FkbWluTmF2YmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Navbars/_Navbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL05hdmJhcnMvX05hdmJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19BYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_Address.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19BZGRyZXNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_AuthModals.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19BdXRoTW9kYWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_CookieBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19Db29raWVCYW5uZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19NZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_Offer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19PZmZlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19QYXltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/Sections/_Slider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1NlY3Rpb25zL19TbGlkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/User/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9DYXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/User/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9FZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/User/OrderHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9PcmRlckhpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9Qcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/User/Support.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9TdXBwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/marknikulov11gmail.com/Downloads/etc/MarcDonalds/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

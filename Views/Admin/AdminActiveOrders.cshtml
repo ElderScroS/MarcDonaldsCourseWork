@@ -1,0 +1,88 @@
+﻿@using MarkRestaurant.Models
+@using MarkRestaurant.Data.Repositories
+@inject IDashboardRepository dashboardRepository
+
+@{
+    var activeOrders = dashboardRepository.GetActiveOrdersAsync().Result;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Active Orders</title>
+    <link href="~/css/admin/admin-active-orders.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/admin/admin-main.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+<partial name="~/Views/Shared/Navbars/_AdminNavbar.cshtml" />
+
+<div class="orders-container">
+    <h1 class="orders-title">Active Orders</h1>
+
+    @if (activeOrders != null && activeOrders.Any())
+    {
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Total Products</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in activeOrders)
+                {
+                    <tr class="order-toggle" data-order-id="@order.Id">
+                        <td>@order.User!.Name @order.User.Surname @order.User.MiddleName</td>
+                        <td>@order.User.Email</td>
+                        <td>@order.Items.Count()</td>
+                        <td><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                    <tr class="order-details" data-order-id="@order.Id" style="display: none;">
+                        <td colspan="4">
+                            <table class="inner-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in order.Items)
+                                    {
+                                        <tr>
+                                            <td>@item.Product!.Title</td>
+                                            <td>@(item.Product.Price * item.Quantity)</td>
+                                            <td>@item.Quantity</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="empty-error">Empty</p>
+    }
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.order-toggle').forEach(row => {
+            row.addEventListener('click', function () {
+                const orderId = this.getAttribute('data-order-id');
+                const detailsRow = document.querySelector(`.order-details[data-order-id='${orderId}']`);
+                detailsRow.style.display = detailsRow.style.display === 'none' ? 'table-row' : 'none';
+            });
+        });
+    });
+</script>
+</body>
+</html>

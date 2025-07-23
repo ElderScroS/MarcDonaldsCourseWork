@@ -1,0 +1,119 @@
+﻿.add-product-container {
+    background-color: #1e1e2f;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 700px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.admin-add-product-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 650;
+    color: #f8f8f8;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 8px;
+    color: #cfcfcf;
+    display: block;
+}
+
+input, select {
+    background-color: #2a2a3b;
+    border: 1px solid #4a4a5d;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: left;
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    input:focus, select:focus {
+        border-color: #5e5e80;
+        box-shadow: 0 0 8px rgba(94, 94, 128, 0.5);
+    }
+
+.add-product-button {
+    background-color: #292945;
+    color: #f1f1f1;
+    border: 1px solid #4a4a5d;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+    .add-product-button:hover {
+        background-color: #363656;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(54, 54, 86, 0.5);
+    }
+
+.file-input {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.image-preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .add-product-container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .admin-add-product-title {
+        font-size: 28px;
+    }
+
+    input, select {
+        font-size: 15px;
+    }
+
+    .add-product-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

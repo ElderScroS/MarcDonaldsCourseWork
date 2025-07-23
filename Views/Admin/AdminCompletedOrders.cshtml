@@ -1,0 +1,114 @@
+﻿@using MarkRestaurant.Models
+@using MarkRestaurant.Data;
+@using MarkRestaurant.Data.Repositories;
+@inject IDashboardRepository dashboardRepository;
+
+@{
+    var completedOrders = dashboardRepository.GetAllCompletedOrdersAsync().Result;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Completed Orders</title>
+        <link href="~/css/admin/admin-completed-orders.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/admin/admin-main.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <partial name="~/Views/Shared/Navbars/_AdminNavbar.cshtml" />
+
+        <div class="orders-container">
+            <h1 class="orders-title">Completed Orders</h1>
+
+            @if (completedOrders != null && completedOrders.Any())
+            {
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Full Name</th>
+                            <th>Phone</th>
+                            <th>Amount</th>
+                            <th>Completed At</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var completedOrder in completedOrders)
+                    {
+                        <tr class="order-toggle" data-order-id="@completedOrder.Id">
+                            <td>@completedOrder.OrderNumber</td>
+                            <td>@completedOrder.User!.Name @completedOrder.User!.Surname @completedOrder.User!.MiddleName</td>
+                            <td>@completedOrder.User.PhoneNumber</td>
+                            <td>₼ @completedOrder.Amount</td>
+                            <td>@completedOrder.CreatedAt.ToString("g")</td>
+                            <td><i class="fas fa-chevron-down"></i></td>
+                        </tr>
+                        <tr class="order-details" data-order-id="@completedOrder.Id" style="display: none;">
+                            <td colspan="4">
+                                <table class="inner-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Title</th>
+                                            <th>Unit Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead> 
+                                    <tbody>
+                                        @foreach (var item in completedOrder.Items)
+                                        {
+                                            <tr>
+                                                <td>@item.Product!.Category</td>
+                                                <td>@item.Product.Title</td>
+                                                <td>₼ @item.Product.Price</td>
+                                                <td>@item.Quantity</td>
+                                                <td>₼ @(item.Product.Price * item.Quantity)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="empty-error">Empty</p>
+            }
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.order-toggle').forEach(row => {
+                    row.addEventListener('click', function () {
+                        const orderId = this.getAttribute('data-order-id');
+                        const detailsRow = document.querySelector(`.order-details[data-order-id='${orderId}']`);
+
+                        // Переключаем класс для анимации поворота стрелки
+                        this.classList.toggle('active');
+
+                        // Плавное появление
+                        if (detailsRow.style.display === 'none' || detailsRow.style.display === '') {
+                            detailsRow.style.display = 'table-row';
+                            detailsRow.style.opacity = 0;
+                            setTimeout(() => {
+                                detailsRow.style.opacity = 1;
+                            }, 10);
+                        } else {
+                            detailsRow.style.opacity = 0;
+                            setTimeout(() => {
+                                detailsRow.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

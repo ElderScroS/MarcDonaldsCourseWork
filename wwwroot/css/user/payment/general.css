@@ -1,0 +1,264 @@
+/* -------------------- GENERAL FOR MODALS -------------------- */
+
+.modal-overlay-payment {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.411);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease; 
+}
+
+.modal-overlay-payment.show {
+    display: flex;
+    animation: fadeIn 0.3s forwards;
+}
+.modal-overlay-payment.hide {
+    animation: fadeOut 0.3s forwards;
+}
+
+.modal-content-payment {
+    background: #1f1f1f;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);    
+    color: white;
+    border-radius: 12px;
+    width: 90%;
+    height: auto;
+    max-width: 38vw;
+    opacity: 0;
+    transition: all 0.4s ease; 
+}
+.modal-content-payment.addContent {
+    max-width: 42vw;
+}
+
+.modal-overlay-payment.show .modal-content-payment {
+    opacity: 1;
+}
+
+.modal-header-payment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.7vh;
+    border-top-left-radius: 12px; border-top-right-radius: 12px; 
+    position: relative;
+    z-index: 1000;
+    top: 0;
+    background: transparent;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.modal-title-dynamic-payment {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 1vh;
+    font-size: 17px;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    color: white;
+}
+
+.modal-header-payment.scrolled {
+    background: #212121;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.modal-header-payment.scrolled .modal-title-dynamic-payment {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-btn-payment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    margin: 1vh 0vh 0vh 1.5vh;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    justify-content: center;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.127);
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.back-btn-payment:hover {
+    background-color: rgba(255, 255, 255, 0.153);
+}
+
+.close-btn-payment {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    margin: 1vh 1.5vh 0vh 0vh;
+    align-items: center;
+    z-index: 3;
+    justify-content: center;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.127);
+    font-size: 20px;
+    padding: 1vh;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn-payment:hover {
+    background-color: rgba(255, 255, 255, 0.153);
+}
+
+.modal-view-payment {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+    display: none;
+}
+
+.modal-view-payment.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0%);
+    z-index: 2;
+}
+
+.modal-container-relative-payment {
+    position: relative;
+    overflow-y: auto;
+    margin: auto;
+    height: auto;
+    max-height: 60vh; 
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.slide-in {
+    animation: slideInFromRight 0.5s ease forwards;
+}
+
+.slide-out {
+    animation: slideOutToRight 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+}
+
+.toast-success {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* ← Левый нижний угол */
+    background-color: #1e1e1e;
+    color: #fff;
+    border-radius: 20px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(20px); /* Добавим лёгкий выезд */
+    font-size: 18px;
+    min-width: 360px;
+}
+
+.toast-success.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-grow: 1;
+}
+
+.toast-icon {
+    background: #00cc00;
+    color: #000;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.toast-message {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.toast-btn {
+    background-color: #00aaff;
+    color: #000;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toast-btn:hover {
+    background-color: #0091cc;
+}
+
+.cardSelected {
+    display: none;
+}

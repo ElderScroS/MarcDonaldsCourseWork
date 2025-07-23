@@ -1,0 +1,211 @@
+.modal-title-payment {
+    font-size: 3.6vh;
+    font-weight: 900;
+    margin-top: 1vh;
+    margin-bottom: 5vh;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+.credit-title, .other-title {
+    font-size: 3vh;
+    font-weight: 550;
+    padding-left: 2vh;
+    margin-bottom: 3vh;
+    color: #fff;
+    text-align: left;
+    width: 100%;
+}
+
+.add-card-button {
+    margin-left: 4vh;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    display: flex;
+    font-size: 2.1vh;
+    font-weight: lighter;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-card-button i {
+    margin-right: 1.6vh;
+    font-size: 1.9vh;
+    transition: all 0.2s ease;
+}
+
+.add-card-button span {
+    transition: all 0.2s ease;
+}
+
+.add-card-button:hover i,
+.add-card-button:hover span {
+    color: rgba(255, 255, 255, 0.695);
+}
+
+.card-hr {
+    border: none;
+    border-top: 1px solid #ffffff;
+    margin: 1px 2vh;
+}
+
+.hr-div {
+    padding-left: 1.5vh; padding-right: 1.5vh;
+}
+.hr-div hr {
+    border: none;
+    border-top: 1px solid #ffffff;
+}
+
+.card-list-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 2vh;
+    border-radius: 12px;
+    color: white;
+}
+
+.img-name {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5vh;
+}
+
+.name-number {
+    flex-direction: column;
+}
+
+.visa-img, .master-img {
+    width: 35px;
+    height: auto;
+    margin: auto;
+    border-radius: 4px;
+}
+
+.card-name {
+    text-align: left;
+    font-weight: 500;
+    color: white;
+    font-size: 2vh;
+    font-weight: bold;
+}
+
+.card-number {
+    font-size: 1.8vh;
+    color: #aaa;
+    font-weight: lighter;
+}
+
+.payment-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 1vh;
+}
+
+.select-btn-card {
+    background-color: rgba(59, 128, 255, 0.243);
+    color: #57abf5;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.delete-btn-card {
+    background-color: rgba(255, 59, 59, 0.181);
+    color: #f55757;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.delete-btn-card:hover {
+    color: #f55757;
+    background-color: rgba(255, 59, 59, 0.111);
+}.card-list-container
+.select-btn-card:hover {
+    background-color: rgba(59, 128, 255, 0.201);
+}
+
+.payment {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    min-height: 42px;
+    overflow: hidden;
+    gap: 1.5vh;
+}
+
+.div-apple {
+    width: 40px;
+    height: 20px;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.img-apple {
+    width: 30px;
+    height: auto;
+    margin-bottom: 0.7vh;
+}
+
+.img-google {
+    width: 45px;
+    height: auto;
+}
+
+.cash-div {
+    width: 40px;
+    border-radius: 4px;
+    height: 27px;
+    background-color: white;
+}
+
+.cash-img {
+    width: 27px;
+    height: 27px;
+    margin-bottom: 1vh;
+}
+
+.payment-title {
+    font-size: 2.3vh;
+    font-weight: 500;
+}
+
+.select-payment-btn {
+    margin-left: auto;
+    background-color: rgba(59, 128, 255, 0.243);
+    color: #57abf5;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.select-payment-btn:hover {
+    background-color: rgba(59, 128, 255, 0.201);
+}
+
+.select-payment-btn.disabled {
+    display: none;
+    pointer-events: none;
+    cursor: default;
+}

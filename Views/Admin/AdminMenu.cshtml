@@ -1,0 +1,147 @@
+﻿@using MarkRestaurant.Data;
+@using MarkRestaurant.Data.Repositories;
+@using MarkRestaurant.Models;
+@using Microsoft.EntityFrameworkCore;
+@inject IMenuRepository menuRepository
+
+@{
+    ViewData["Title"] = "Admin Menu";
+
+    var menu = menuRepository.GetMenuForAdmin().Result;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="~/css/admin/admin-menu.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/admin/admin-main.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <title>Admin Menu</title>
+    </head>
+    <body>
+        <partial name="~/Views/Shared/Navbars/_AdminNavbar.cshtml"/>
+
+        <div class="menu-container">
+            <h1 class="admin-menu-title">Menu Management</h1>
+
+            @if (menu != null && menu.Any())
+            {
+                <div class="filter-container">
+                    <ul class="filter-list">
+                        <li class="flist-item active" data-category="All">All</li>
+                        <li class="flist-item" data-category="Burgers">Burgers</li>
+                        <li class="flist-item" data-category="Potato">Potato</li>
+                        <li class="flist-item" data-category="Snacks">Snacks</li>
+                        <li class="flist-item" data-category="Drinks">Drinks</li>
+                    </ul>
+
+                    <form asp-controller="Admin" asp-action="AdminAddProduct" method="post">
+                        <button type="submit" class="add-product-button">Add Product</button>
+                    </form>
+                </div>
+
+                <div class="menu">
+                    @foreach (var product in menu)
+                    {
+                        <div class="product @product.Category">
+                            <img src="@product.ImageUrl" alt="@product.Title">
+                            <div class="product-info">
+                                <h3>@product.Title</h3>
+                                <p>₼ @product.Price</p>
+
+                                <div class="buttons">
+                                    <form method="post" asp-controller="Admin" asp-action="AdminEditProduct">
+                                        <input type="hidden" name="productId" value="@product.Id" />
+                                        <button type="submit" class="edit-button">
+                                            Edit
+                                        </button> 
+                                    </form>
+                                    <button class="delete-button-menu" data-id="@product.Id" data-title="@product.Title">
+                                        Delete
+                                    </button>    
+                                </div>                        
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else {
+                <p class="empty-error">Empty</p>
+            }
+        </div>
+
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <p id="deleteMessage">
+                    Are you sure you want to delete <span id="productTitle" class="highlight-object"></span> from menu?
+                </p>
+                <div class="modal-buttons">
+                    <button id="cancelDelete" class="cancel-button">No</button>
+                    <form id="confirmDeleteForm" asp-controller="Admin" asp-action="RemoveProductFromMenu" method="post">
+                        <input type="hidden" name="productId" id="deleteProductId"/>
+                        <button type="submit" class="confirm-button">Yes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const filterItems = document.querySelectorAll('.flist-item');
+                const products = document.querySelectorAll('.product');
+
+                filterItems.forEach(item => {
+                    item.addEventListener('click', function () {
+                        filterItems.forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+                        const category = this.getAttribute('data-category');
+                        products.forEach(product => {
+                            const productCategory = product.classList.contains(category) || category === 'All';
+                            if (productCategory) {
+                                product.classList.add('show');
+                            } else {
+                                product.classList.remove('show');
+                            }
+                        });
+                    });
+                });
+
+                setTimeout(() => {
+                    products.forEach(product => product.classList.add('show'));
+                }, 100);
+
+                @* -------------- MODAL -------------- *@
+
+                const modal = document.getElementById('deleteModal');
+                const deleteMessage = document.getElementById('deleteMessage');
+                const productTitleSpan = document.getElementById('productTitle');
+                const deleteProductIdInput = document.getElementById('deleteProductId');
+                const confirmDeleteForm = document.getElementById('confirmDeleteForm');
+
+                document.querySelectorAll('.delete-button-menu').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const productId = this.getAttribute('data-id');
+                        const productTitle = this.getAttribute('data-title');
+
+                        productTitleSpan.textContent = productTitle;
+                        deleteProductIdInput.value = productId;
+
+                        modal.style.display = 'flex';
+                    });
+                });
+
+                document.getElementById('cancelDelete').addEventListener('click', function () {
+                    modal.style.display = 'none';
+                });
+
+                window.onclick = function (event) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                };
+            });
+        </script>
+    </body>
+</html>

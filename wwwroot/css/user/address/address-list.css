@@ -1,0 +1,161 @@
+.modal-title-where {
+    font-size: 4vh;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+.empty-message-new p {
+    margin: 0px 15px;
+    font-size: 16px;
+    color: #bfbfbf;
+    padding: 2vh;
+    text-align: center;
+}
+
+.address-list-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.address-item-new {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: white;
+    position: relative;
+}
+
+.address-item-new:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 56px;
+    right: 0;
+    height: 1px;
+    background-color: #333;
+}
+
+.address-icon-new {
+    font-size: 20px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 16px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.option-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.address-text-new {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-title-new {
+    text-align: left;
+    font-weight: 500;
+    color: white;
+    font-size: 16px;
+}
+
+.selected {
+    color: #4faaff;
+}
+
+.address-detail-new {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.select-btn-new {
+    background-color: rgba(59, 128, 255, 0.17);
+    color: #57abf5;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.edit-btn-new {
+    background-color: rgba(59, 128, 255, 0.099);
+    color: #57abf5;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.delete-btn-new {
+    background-color: rgba(255, 59, 59, 0.193);
+    color: #f55757;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.delete-btn-new:hover {
+    color: #f55757;
+    background-color: rgba(255, 59, 59, 0.111);
+}
+.edit-btn-new:hover {
+    background-color: rgba(59, 128, 255, 0.145);
+}
+.select-btn-new:hover {
+    background-color: rgba(59, 128, 255, 0.201);
+}
+
+.add-address-new {
+    margin-left: 4vh;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    display: flex;
+    font-size: 2.5vh;
+    align-items: center;
+    color: #4faaff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-address-new i {
+    margin-right: 2vh;
+    font-size: 2.5vh;
+    transition: all 0.3s ease;
+}
+
+.add-address-new span {
+    transition: all 0.3s ease;
+}
+
+.add-address-new:hover i,
+.add-address-new:hover span {
+    color: #4faaffda;
+}
+
+#address-list hr {
+    border: none;
+    border-top: 2px solid #676767;
+    margin: 16px 0;
+}

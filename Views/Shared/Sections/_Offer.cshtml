@@ -1,0 +1,41 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+<section class="offer_section layout_padding-bottom fade-in">
+    <div class="offer_container">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-6  ">
+                    <div class="box ">
+                        <div class="img-box">
+                            <img src="~/images/other/o1.jpg" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                @Localizer["Tasty Thursdays"]
+                            </h5>
+                            <h6>
+                                <span>20%</span>@Localizer["Off"]
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6  ">
+                    <div class="box ">
+                        <div class="img-box">
+                            <img src="~/images/other/o2.jpg" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                @Localizer["Pizza Days"]
+                            </h5>
+                            <h6>
+                                <span>15%</span>@Localizer["Off"]
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

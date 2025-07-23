@@ -1,0 +1,43 @@
+
+.payment-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    max-width: 43vw;
+}
+
+.payment-method {
+    border-radius: 12px;
+    padding: 3.2vh;
+    border: 1px solid #333;
+    display: flex;
+    margin-top: 2vh;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.payment-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.icon-payment {
+    font-size: 2.5vh;
+    margin-right: 2.5vh;
+    color: rgba(255, 255, 255, 0.855);
+    flex-shrink: 0;
+}
+.arrow-payment {
+    margin: 1vh;
+    font-size: 3vh;
+    color: white;
+    flex-shrink: 0;
+}
+.payment-name {
+    display: flex;
+    font-weight: normal;
+    font-size: 2.4vh;
+    color: #fff;
+}

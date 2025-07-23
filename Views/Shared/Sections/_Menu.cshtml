@@ -1,0 +1,93 @@
+@using MarkRestaurant.Data;
+@using MarkRestaurant.Data.Repositories;
+@using MarkRestaurant.Models;
+@inject IMenuRepository menuRepository
+@inject ICartRepository cartRepository
+@inject IAddressRepository addressRepository
+
+@{
+
+
+    var menuItems = menuRepository.GetMenuForUser().Result;
+}
+
+<link href="~/css/other/menu.css" rel="stylesheet" asp-append-version="true"/>
+
+<section class="food_section layout_padding fade-in" id="menu">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>@Localizer["Our Menu"]</h2>
+        </div>
+
+        <div class="filter-container">
+            <ul class="filter-list">
+                <li class="flist-item active" data-category="All">@Localizer["All"]</li>
+                <li class="flist-item" data-category="Burgers">@Localizer["Burgers"]</li>
+                <li class="flist-item" data-category="Potato">@Localizer["Potato"]</li>
+                <li class="flist-item" data-category="Snacks">@Localizer["Snacks"]</li>
+                <li class="flist-item" data-category="Drinks">@Localizer["Drinks"]</li>
+            </ul>
+        </div>
+
+        <div class="products">
+            @foreach (var product in menuItems)
+            {
+                <div class="product @product.Category" data-product-id="@product.Id">
+                    <div class="product-info">
+                        <div>
+                            <h3>@product.Title</h3>
+                            <p>@product.Price.ToString("0.00").Replace('.', ',') AZN</p>
+                        </div>
+
+                        @if (Model?.Id != null)
+                        {
+                            Address? selectedAddress = null;
+
+                            selectedAddress = addressRepository.GetSelectedAddressAsync(User).Result!;
+
+                            @if (selectedAddress == null) {
+                                <span style="display: none;">None</span>
+                            }
+                            else {
+                                <span style="display: none;">Exist</span>
+                            }
+                            
+                            var cartResult = cartRepository.GetCartByUserId(Model.Id)?.Result;
+                            var cartItems = (cartResult?.Items as List<CartItem>) ?? new List<CartItem>();
+
+                            var cartItem = cartItems.FirstOrDefault(ci => ci.ProductId == product.Id);
+                            int quantity = cartItem?.Quantity ?? 0;
+
+                            <div class="cart-actions">
+                                <button class="add-to-cart-btn @(quantity > 0 ? "d-none" : "")" data-product-id="@product.Id">@Localizer["Add to cart"]</button>
+
+                                <div class="quantity-controls @(quantity > 0 ? "" : "d-none")">
+                                    <button class="cart-decrease" data-product-id="@product.Id">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="product-quantity">@quantity</span>
+                                    <button class="cart-increase" data-product-id="@product.Id">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                    <img src="@product.ImageUrl" alt="@product.Title">
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<div id="addressModal" class="modal-overlay d-none">
+    <div class="modal-content dark-modal">
+        <h3>Не выбран адрес доставки</h3>
+        <p>Пожалуйста, добавьте и выберите адрес в <a class="to-profile" href="/User/Profile">профиле пользователя</a>, чтобы оформить заказ.</p>
+        <button id="closeModalBtn">Понятно</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/menu.js" asp-append-version="true"></script>

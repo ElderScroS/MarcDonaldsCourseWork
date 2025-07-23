@@ -1,0 +1,172 @@
+.modal-title-details {
+    font-size: 4vh;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 1vh 2vh;
+    color: #fff;
+}
+
+.exactly-message {
+    font-size: 16px;
+    color: #b4b3b3;
+    text-align: center;   
+    margin-bottom: 3vh; 
+}
+
+.details-form {
+    padding: 0 2vh;
+}
+
+.field-group {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #444;
+    background: #1f1f1f;
+    transition: 0.3s ease;
+    margin-bottom: 16px;
+}
+.field-group:focus-within {
+    border-color: #4fb3ff;
+}
+.field-group input {
+    width: 100%;
+    padding: 1.2em 3em 0.6em 0.7em;
+    background: transparent;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+    resize: none;
+}
+.field-group input:hover {
+    border-color: #4fb3ff92;
+}
+.field-group input:focus {
+    outline: none;
+}
+
+.field-group label {
+    position: absolute;
+    left: 0.7em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.3s ease;
+    background-color: transparent;
+    padding: 0 0.2em;
+}
+
+.field-group input:focus + label {
+    top: 0.8em;
+    font-size: 0.75em;
+    color: #4fb3ffd3;
+}
+
+.field-group input:not(:focus):not(:placeholder-shown) + label {
+    top: 0.8em;
+    font-size: 0.75em;
+    color: #888;
+}
+
+.error-label {
+    margin-left: 8px;
+    margin-top: -2vh;
+    margin-bottom: 12px;
+    font-size: 1.7vh;
+    display: none;
+    color: red !important;
+}
+
+.optional-label {
+    font-size: 12px;
+    text-align: left;
+    color: #888;
+    margin-left: 8px;
+    margin-top: -2vh;
+    margin-bottom: 12px;
+}
+
+.location-footer {
+    text-align: center;
+    margin-bottom: 3vh;
+    padding: 0 2vh 0 2vh;
+}
+.location-footer h5 {
+    font-weight: bold;
+}
+
+.location-footer p {
+    font-size: 16px;
+    color: #b4b3b3;
+    padding-left: 1vh;
+}
+
+.map-container-small {
+    height: 13vh;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    background-color: #1e1e1e;
+}
+
+.map-container-small:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.map-container-small canvas {
+    height: 13vh;
+    width: 100%;
+}
+
+.determine-button {
+    width: 100%;
+    background-color: rgba(59, 128, 255, 0.075);
+    color: #57abf5;
+    border: none;
+    margin-top: 2vh;
+    gap: 2vh;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: lighter;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.determine-button:hover {
+    background-color: rgba(59, 128, 255, 0.111);
+}
+
+/* Фиксированный футер */
+.save-footer {
+    position: sticky;
+    bottom: 0;
+    background: #1a1a1a;
+    box-shadow: 0 -12px 24px -8px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    padding: 0 2vh 2vh 2vh;
+    border-radius: 12px;   
+}
+
+.save-btn {
+    width: 100%;
+    background-color: #2176ae;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.save-btn:disabled {
+    opacity: 0.7;
+}
+.save-btn:hover {
+    background-color: #1d6595;
+}

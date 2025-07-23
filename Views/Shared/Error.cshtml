@@ -1,0 +1,19 @@
+﻿@model ErrorViewModel
+
+<!DOCTYPE html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/css/other/error.css" rel="stylesheet" asp-append-version="true"/>
+
+    <title>@Model.Title</title>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-title">@Model.Title</h1>
+        <p class="error-description">@Model.Description</p>
+        <a class="back-button" asp-controller=@Model.AspController asp-action=@Model.AspAction>Go back</a>
+    </div>
+</body>
+</html>
+
+

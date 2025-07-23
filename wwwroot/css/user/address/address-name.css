@@ -1,0 +1,77 @@
+.modal-title-name {
+    font-size: 4vh;
+    font-weight: 800;
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.help-message {
+    font-size: 16px;
+    color: #b4b3b3;
+    text-align: center;
+}
+
+.location-type-options {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.location-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: white;
+    position: relative;
+}
+
+.location-option:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 56px;
+    right: 0;
+    height: 1px;
+    background-color: #333;
+}
+
+.location-option i {
+    font-size: 20px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.option-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.option-content span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.choose-btn {
+    background-color: rgba(59, 128, 255, 0.075);
+    color: #57abf5;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.choose-btn:hover {
+    background-color: rgba(59, 128, 255, 0.111);
+}

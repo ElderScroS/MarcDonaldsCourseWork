@@ -1,0 +1,214 @@
+/* === Основное === */
+.custom-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 10vh auto 1vh auto;
+}
+
+.custom-heading h2 {
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Cursive', sans-serif;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px #00000020;
+}
+
+.custom-empty-message {
+    color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 35vh;
+    padding: 20px;
+    font-size: 18px;
+}
+
+/* === Карточка === */
+.order-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-id {
+    font-size: 18px;
+    color: #00ffff;
+}
+
+.order-date {
+    font-size: 14px;
+    color: #cccccc;
+    margin-top: 4px;
+}
+
+.order-arrow i {
+    color: #fff;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* === Модалка === */
+.order-modal {
+    display: none;
+    position: fixed; /* заменено с absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* чтобы занимала весь экран */
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    padding: 5vh 20px;
+    animation: fadeIn 0.3s ease forwards;
+    overflow-y: auto;
+}
+
+
+.order-modal-content {
+    position: absolute; /* или override из JS */
+    max-width: 700px;
+    width: 90%;
+    color: #fff;
+    background-color: #1f1f1f;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    padding: 35px 40px;
+}
+
+
+
+
+.close-button {
+    position: absolute;
+    right: 25px;
+    top: 18px;
+    font-size: 26px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: #fff;
+}
+
+/* === Заголовок === */
+.modal-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+.modal-header h3 {
+    font-size: 22px;
+    color: #00ffff;
+    margin: 0;
+}
+
+.modal-subinfo {
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* === Адрес === */
+.modal-address {
+    background-color: #333;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 20px 0 15px 0;
+    color: #eee;
+    font-size: 15px;
+}
+
+/* === Сборы === */
+.modal-fees {
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    color: #eee;
+    font-size: 15px;
+}
+
+.modal-fees p {
+    margin: 6px 0;
+}
+
+/* === Товары === */
+.modal-items {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.modal-items li {
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #aef;
+    font-size: 15px;
+}
+
+.modal-items li .item-name {
+    font-weight: 500;
+}
+
+.modal-items li .item-qty {
+    font-size: 13px;
+    color: #ccc;
+}
+
+/* === Итого === */
+.modal-total {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffdd57;
+}
+
+/* === Подвал === */
+.modal-footer-info {
+    font-size: 14px;
+    color: #888;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.modal-footer-info p {
+    margin: 4px 0;
+}
+
+/* === Анимации === */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.no-scroll {
+    overflow: hidden;
+}

@@ -1,0 +1,247 @@
+@using MarkRestaurant.Models
+@using MarkRestaurant.Data.Repositories
+@inject IAddressRepository addressRepository
+
+<link href="~/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/address/general.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/address/address-list.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/address/address-location.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/address/address-name.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/address/address-details.css" rel="stylesheet" asp-append-version="true"/>
+<link href="~/css/user/address/address-edit.css" rel="stylesheet" asp-append-version="true"/>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
+@{
+    Address? selectedAddress = null;
+    string? currentPage = ViewData["Title"] as string;
+
+    selectedAddress = addressRepository.GetSelectedAddressAsync(User).Result!;
+
+    List<Address> addresses = addressRepository.GetAddressesByUserAsync(User).Result;
+}
+
+<span id="currentPage" style="display: none;">@currentPage</span>
+
+<div class="modal-overlay-new">
+    <div class="modal-content-new">
+        <div class="modal-header-new">
+            <button class="back-btn-new" onclick="showAddressList()" style="display: none;"><i class="fa-solid fa-arrow-left"></i></button>
+            <h5 class="modal-title-dynamic"></h5>
+            <button class="close-btn-new" onclick="closeModal()">✕</button>
+        </div>
+
+        <div class="modal-container-relative">
+            <div id="address-list" class="modal-view active">
+                <h3 class="modal-title-where">Where?</h3>
+
+                @if (!addresses.Any())
+                {
+                    <div class="empty-message-new">
+                        <p>It looks like you don’t have any saved addresses yet. Add an address so we know where to deliver your order.</p>
+                    </div>
+                }
+                else
+                {
+                <div class="address-list-container">
+                    @foreach (var address in addresses)
+                    {
+                        <div class="address-item-new">
+                            <i class="@(address.Title == "Apartment" ? "fa-regular fa-building" 
+                                        : address.Title == "Cottage" ? "fa-regular fa-house" 
+                                        : address.Title == "Work" ? "fa-regular fa-briefcase" 
+                                        : "fa-regular fa-location-dot") address-icon-new @(address.IsSelected ? "selected" : "")"></i>
+
+                            <div class="option-content">
+                                <div class="address-text-new">
+                                    <span class="address-title-new @(address.IsSelected ? "selected" : "")">@address.Title</span>
+                                    <span class="address-detail-new">@address.Street @address.HouseNumber</span>
+                                </div>
+
+                                <div class="btns">
+                                    @if (!address.IsSelected)
+                                    {
+                                        <form asp-controller="User" asp-action="SelectAddress">
+                                            <input type="hidden" name="addressId" value="@address.Id">
+                                            <input type="hidden" name="currentPage" value="@currentPage">
+                                            <button type="submit" class="select-btn-new">Select</button>
+                                        </form>
+                                    }
+                                    @if (currentPage == "Profile") {
+                                        <form asp-controller="User" asp-action="DeleteAddress">
+                                            <input type="hidden" name="currentPage" value="@currentPage">
+                                            <input type="hidden" name="addressId" value="@address.Id">
+                                            <button type="submit" class="delete-btn-new">Delete</button>
+                                        </form>
+                                    }
+                                    @if (currentPage == "Cart") {
+                                        <button class="edit-btn-new" data-address-id="@address.Id" data-address-entrance="@address.Entrance" data-address-floor="@address.FloorApartment" data-address-comment="@address.Comment" data-longitude="@address.Longitude" data-latitude="@address.Latitude">Edit</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                }
+                <hr />
+
+                <div class="add-address-new">
+                    <i class="fa-solid fa-plus"></i> <span>Add new address</span>
+                </div>
+            </div>
+
+            <div id="add-address" class="modal-view">
+                <h3 class="modal-title-address">Add new address</h3>
+                @{
+                    Address? newAddress = new Address();
+                }
+
+                <form class="address-form">
+                    <div class="input-group"> 
+                        <input type="text" id="address" placeholder=" " required />
+                        <label for="address">Street name and house number</label>
+                        <button type="button" class="icon-button" onclick="getLocation()">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                        </button>
+                    </div>
+
+                    <button type="submit" class="submit-btn disabled" disabled>Continue</button>
+                </form>
+
+                <input type="hidden" id="latitude" name="Latitude">
+                <input type="hidden" id="longitude" name="Longitude">
+            </div>
+
+            <div id="name-location" class="modal-view">
+               <h3 class="modal-title-name">What’s the location name?</h3>
+                <div class="help-message">
+                    <p>Help us find you faster by selecting your location type.</p>
+                </div>
+
+                <div class="location-type-options">
+                    <div class="location-option" onclick="selectLocationType('Apartment')">
+                        <i class="fa-regular fa-building"></i>                        
+                        <div class="option-content">
+                            <span>Apartment</span>
+                            <button class="choose-btn">Choose</button>
+                        </div>
+                    </div>
+                    <div class="location-option" onclick="selectLocationType('Cottage')">
+                        <i class="fa-regular fa-house"></i>
+                        <div class="option-content">
+                            <span>Cottage</span>
+                            <button class="choose-btn">Choose</button>
+                        </div>
+                    </div>
+                    <div class="location-option" onclick="selectLocationType('Work')">
+                        <i class="fa-regular fa-briefcase"></i>
+                        <div class="option-content">
+                            <span>Work</span>
+                            <button class="choose-btn">Choose</button>
+                        </div>
+                    </div>
+                    <div class="location-option" onclick="selectLocationType('Other')">
+                        <i class="fa-regular fa-location-dot"></i> 
+                        <div class="option-content">
+                            <span>Other</span>
+                            <button class="choose-btn">Choose</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="address-details" class="modal-view">
+                <h3 class="modal-title-details">Address details</h3>
+                <div class="exactly-message">
+                    <p>Providing an accurate address helps us deliver your order faster.</p>
+                </div>
+
+                <form class="details-form">
+                    <div class="field-group">
+                        <input type="text" id="entrance" placeholder=" " required />
+                        <label for="entrance">Entrance / Porch</label>
+                    </div>
+                    <div class="error-label">Required field</div>
+
+                    <div class="field-group">
+                        <input type="text" id="floor-apartment" placeholder=" " />
+                        <label for="floor-apartment">Floor, apartment number</label>
+                    </div>
+                    <div class="optional-label">Optional</div>
+                    
+                    <div class="field-group">
+                        <input id="comment" rows="2" placeholder=" "></input>
+                        <label for="comment">Comments for the courier</label>
+                    </div>
+                    <div class="optional-label">Optional</div>
+                </form>
+
+                <div class="location-footer">
+                    <h5>Location address</h5>
+                    <p>Marking your exact location on the map helps us find you faster.</p>
+
+                    <div class="map-container-small" id="map"></div>
+                    
+                    <button id="determine-btn" class="determine-button">
+                        <i class="fa-regular fa-map"></i> Mark entrance location on map
+                    </button>
+                </div>
+
+                <div class="save-footer">
+                    <div class="details-new" style="display: none;">
+                        <p class="street"></p>
+                        <p class="house"></p>
+                        <p class="city"></p>
+                        <p class="country"></p>
+                    </div>
+                    <button id="save-btn" class="save-btn" disabled>Save</button>
+                </div>
+            </div>
+
+            <div id="address-edit" class="modal-view">
+                <h3 class="modal-title-edit">Edit address</h3>
+                <div class="exactly-message-edit">
+                    <p>Providing an accurate address helps us deliver your order faster.</p>
+                </div>
+
+                <form class="details-form-edit">
+                    <div class="field-group-edit">
+                        <input type="text" id="entrance-edit" placeholder=" " required />
+                        <label for="entrance">Entrance / Porch</label>
+                    </div>
+                    <div class="error-label-edit">Required field</div>
+
+                    <div class="field-group-edit">
+                        <input type="text" id="floor-apartment-edit" placeholder=" " />
+                        <label for="floor-apartment">Floor, apartment number</label>
+                    </div>
+                    <div class="optional-label-edit">Optional</div>
+                    
+                    <div class="field-group-edit">
+                        <input id="comment-edit" rows="2" placeholder=" "></input>
+                        <label for="comment">Comments for the courier</label>
+                    </div>
+                    <div class="optional-label-edit">Optional</div>
+                </form>
+
+                <div class="location-footer-edit">
+                    <h5>Location address</h5>
+                    <p>Marking your exact location on the map helps us find you faster.</p>
+
+                    <div class="map-container-small-edit" id="map-edit"></div>
+                    
+                    <button id="determine-btn-edit" class="determine-button-edit">
+                        <i class="fa-regular fa-map"></i> Mark entrance location on map
+                    </button>
+                </div>
+
+                <div class="save-footer-edit">
+                    <button id="save-btn-edit" data-address-id="" class="save-btn-edit" disabled>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+<script src="~/js/address.js" asp-append-version="true"></script>
